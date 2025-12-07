@@ -1225,6 +1225,24 @@
                 </div>
               </div>
             </div>
+
+            <div id="pointsPreview" style="display: none; padding: 16px; background: linear-gradient(135deg, rgba(0, 255, 240, 0.1), rgba(191, 0, 255, 0.1)); border: 1px solid rgba(0, 255, 240, 0.2); border-radius: 12px; margin-bottom: 16px; animation: fadeIn 0.3s ease;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <span style="font-family: var(--font-display); font-size: 0.7rem; color: var(--text-secondary); letter-spacing: 0.1em;">PROJECTED POINTS</span>
+                  <p style="font-size: 0.65rem; color: var(--text-muted); margin-top: 2px;">Based on current inputs</p>
+                </div>
+                <div style="text-align: right;">
+                  <span id="previewPoints" style="font-family: var(--font-mono); font-size: 2rem; font-weight: 700; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: block; line-height: 1;">0.0</span>
+                  <span style="font-size: 0.65rem; color: var(--text-muted);">points</span>
+                </div>
+              </div>
+              
+              <!-- Category Breakdown Mini Preview -->
+              <div id="previewBreakdown" style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(0, 255, 240, 0.1); display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; font-size: 0.7rem;">
+                <!-- Populated by JS -->
+              </div>
+            </div>
             
             <button class="btn btn-primary submit-btn" onclick="logHabits()">💾 Log Habits</button>
             
@@ -1775,6 +1793,78 @@
       return Math.max(0, Math.round(points * 10) / 10);
     }
 
+    function updatePointsPreview() {
+      const habits = {
+        sleep: document.getElementById('sleep').value,
+        study: document.getElementById('study').value,
+        exercise: document.getElementById('exercise').value,
+        hydration: document.getElementById('hydration').value,
+        nutrition: document.getElementById('nutrition').value,
+        mindfulness: document.getElementById('mindfulness').value,
+        screentime: document.getElementById('screentime').value
+      };
+      
+      const hasAnyValue = Object.values(habits).some(v => v && parseFloat(v) > 0);
+      const preview = document.getElementById('pointsPreview');
+      
+      if (hasAnyValue) {
+        const totalPoints = calculatePoints(habits);
+        
+        // Animate the number change
+        const previewPointsEl = document.getElementById('previewPoints');
+        previewPointsEl.textContent = totalPoints.toFixed(1);
+        
+        // Calculate category breakdown
+        const breakdown = {};
+        if (habits.sleep && parseFloat(habits.sleep) > 0) {
+          const sleep = parseFloat(habits.sleep);
+          if (sleep >= 7 && sleep <= 9) breakdown.sleep = sleep;
+          else if (sleep > 9) breakdown.sleep = 9 - (sleep - 9) * 0.5;
+          else breakdown.sleep = sleep * 0.8;
+        }
+        if (habits.study && parseFloat(habits.study) > 0) {
+          breakdown.study = Math.min(parseFloat(habits.study), 4.5);
+        }
+        if (habits.exercise && parseFloat(habits.exercise) > 0) {
+          breakdown.exercise = parseFloat(habits.exercise) * 2;
+        }
+        if (habits.hydration && parseFloat(habits.hydration) > 0) {
+          const hydration = parseFloat(habits.hydration);
+          breakdown.hydration = hydration * 0.5 + (hydration >= 8 ? 2 : 0);
+        }
+        if (habits.nutrition && parseFloat(habits.nutrition) > 0) {
+          breakdown.nutrition = parseFloat(habits.nutrition) * 5;
+        }
+        if (habits.mindfulness && parseFloat(habits.mindfulness) > 0) {
+          breakdown.mindfulness = Math.min(parseFloat(habits.mindfulness) * 0.1, 3);
+        }
+        
+        // Update breakdown display
+        const breakdownEl = document.getElementById('previewBreakdown');
+        const categoryIcons = {
+          sleep: '🌙',
+          study: '📚',
+          exercise: '🏋️',
+          hydration: '💧',
+          nutrition: '🍎',
+          mindfulness: '🧠'
+        };
+        
+        breakdownEl.innerHTML = Object.entries(breakdown)
+          .filter(([_, pts]) => pts > 0)
+          .map(([cat, pts]) => `
+            <div style="display: flex; align-items: center; gap: 4px; color: var(--text-secondary);">
+              <span>${categoryIcons[cat]}</span>
+              <span style="font-family: var(--font-mono); color: var(--neon-green); font-weight: 700;">+${pts.toFixed(1)}</span>
+            </div>
+          `).join('');
+        
+        preview.style.display = 'block';
+      } else {
+        preview.style.display = 'none';
+      }
+    }
+
     // Log habits
     function logHabits() {
       const today = new Date().toISOString().split('T')[0]; 
@@ -2234,6 +2324,10 @@
     if (state.user.name === 'Player') {
       setTimeout(promptForName, 500);
     }
+    document.querySelectorAll('.habit-field input').forEach(input => {
+      input.addEventListener('input', updatePointsPreview);
+      input.addEventListener('change', updatePointsPreview);
+    });
   </script>
 </body>
 </html>
