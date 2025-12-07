@@ -340,6 +340,24 @@
       box-shadow: 0 0 15px color-mix(in srgb, var(--accent-color, var(--neon-cyan)) 20%, transparent);
     }
 
+    @keyframes pulse {
+      0%, 100% { 
+        transform: scale(1); 
+      }
+      50% { 
+        transform: scale(1.15); 
+      }
+    }
+
+    .habit-field:hover .field-header span {
+      animation: pulse 0.6s ease-in-out;
+    }
+
+    .habit-field:focus-within .field-header span {
+      filter: drop-shadow(0 0 8px currentColor);
+      animation: pulse 0.6s ease-in-out;
+    }
+
     .field-header {
       display: flex;
       align-items: center;
