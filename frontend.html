@@ -1043,6 +1043,12 @@
       .nav-link span { display: none; }
       .insights-grid { grid-template-columns: 1fr; }
     }
+    @keyframes fall {
+      to { 
+        transform: translateY(100vh) rotate(360deg); 
+        opacity: 0; 
+      }
+    }
   </style>
 </head>
 <body>
@@ -1774,6 +1780,14 @@
       
       const newPoints = calculatePoints(habits);
 
+      const personalBest = parseFloat(localStorage.getItem('personalBest') || 0);
+      const isNewRecord = newPoints > personalBest;
+      
+      if (isNewRecord) {
+        localStorage.setItem('personalBest', newPoints);
+        triggerConfetti();
+      }
+
       if (alreadyLoggedToday) {
         const oldPoints = state.todayPoints || 0;
         const pointsDiff = newPoints - oldPoints;
@@ -1795,7 +1809,11 @@
       
         saveState();
         updateUI();
-        showToast(`Habits updated! ${pointsDiff >= 0 ? '+' : ''}${pointsDiff.toFixed(1)} points`, false, newPoints);
+        if (isNewRecord) {
+          showToast(`🎉 NEW PERSONAL BEST! ${newPoints.toFixed(1)} points! 🎉`, false, newPoints);
+        } else {
+          showToast(`Habits updated! ${pointsDiff >= 0 ? '+' : ''}${pointsDiff.toFixed(1)} points`, false, newPoints);
+        }
       } else {
         // New entry for today
         state.habits = habits;
@@ -1818,7 +1836,11 @@
 
         saveState();
         updateUI();
-        showToast(`Habits logged! +${newPoints.toFixed(1)} points`, false, newPoints);
+        if (isNewRecord) {
+          showToast(`🎉 NEW PERSONAL BEST! ${newPoints.toFixed(1)} points! 🎉`, false, newPoints);
+        } else {
+          showToast(`Habits logged! +${newPoints.toFixed(1)} points`, false, newPoints);
+        }
       }
     }
 
@@ -1885,6 +1907,29 @@
         toast.classList.remove('show');
       }, 3000);
     }
+
+    function triggerConfetti() {
+      const colors = ['var(--neon-cyan)', 'var(--neon-pink)', 'var(--neon-green)', 'var(--neon-yellow)', 'var(--neon-orange)'];
+      
+      for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement('div');
+        confetti.style.cssText = `
+          position: fixed;
+          width: ${Math.random() * 10 + 5}px;
+          height: ${Math.random() * 10 + 5}px;
+          background: ${colors[Math.floor(Math.random() * colors.length)]};
+          left: ${Math.random() * 100}vw;
+          top: -10px;
+          border-radius: ${Math.random() > 0.5 ? '50%' : '0'};
+          animation: fall ${2 + Math.random() * 3}s linear;
+          pointer-events: none;
+          z-index: 9999;
+        `;
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 5000);
+      }
+    }
+
 
     // Copy invite code
     function copyCode() {
