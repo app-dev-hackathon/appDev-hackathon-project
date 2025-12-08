@@ -2137,6 +2137,8 @@
       weekPoints: 0,
       daysLogged: 0,
       streak: 0,
+      lastLogDate: null,
+      todayPoints: 0,
       league: {
         name: 'Fantasy Life League',
         code: 'FLL2025',
@@ -2155,6 +2157,17 @@
       const saved = localStorage.getItem('fllState');
       if (saved) {
         state = { ...state, ...JSON.parse(saved) };
+      }
+      //check if streak should be reset
+      if (state.lastLogDate) {
+        const lastLog = new Date(state.lastLogDate);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        lastLog.setHours(0, 0, 0, 0);
+        const daysDiff = Math.floor((today - lastLog) / (1000 * 60 * 60 * 24));
+        if (daysDiff > 1) {
+          state.streak = 0;
+        }
       }
       if (state.league.players.length === 0) {
         state.league.players = [
