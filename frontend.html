@@ -2206,6 +2206,8 @@
     }
 
     function logHabits() {
+      const today = new Date().toISOString().split('T')[0];
+      const alreadyLoggedToday = state.lastLogDate === today;
       const habits = {
         sleep: document.getElementById('sleep').value,
         study: document.getElementById('study').value,
@@ -2221,24 +2223,47 @@
         return;
       }
       
-      const points = calculatePoints(habits);
-      state.habits = habits;
-      state.weekPoints += points;
-      state.daysLogged = Math.min(7, state.daysLogged + 1);
-      state.streak++;
-      state.matchup.userScore += points;
+      const newPoints = calculatePoints(habits);
+
+      if(alreadyLoggedToday){
+        // Updste existing entry
+        const oldPoints = state.todayPoints || 0;
+        const pointsDiff = newPoints - oldPoints;
+        state.habits = habits;
+        state.todayPoints= newPoints;
+        state.weekPoints += pointsDiff;
+        state.matchup.userScore += pointsDiff;
       
-      const userPlayer = state.league.players.find(p => p.isUser);
-      if (userPlayer) {
-        userPlayer.weekPts = state.matchup.userScore;
-        userPlayer.points += points;
+        const userPlayer = state.league.players.find(p => p.isUser);
+        if (userPlayer) {
+          userPlayer.weekPts = state.matchup.userScore;
+          userPlayer.points += pointsDiff;
+        }
+      
+        showCoachTip(habits);
+      
+        saveState();
+        updateUI();
+        showToast(`Habits updated! ${pointsDiff >= 0 ? '+' : ''}${pointsDiff.toFixed(1)} points`, false, newPoints);
+      } else {
+        // New entry for today
+        state.habits = habits;
+        state.todayPoints = newPoints;
+        state.weekPoints += newPoints;
+        state.daysLogged = Math.min(7, state.daysLogged + 1);
+        state.streak++;
+        state.matchup.userScore += newPoints;
+        state.lastLogDate = today;
+        const userPlayer = state.league.players.find(p => p.isUser);
+        if (userPlayer) {
+          userPlayer.weekPts = state.matchup.userScore;
+          userPlayer.points += newPoints;
+        }
+        showCoachTip(habits);
+        saveState();
+        updateUI();
+        showToast(`Habits logged! +${newPoints.toFixed(1)} points`, false, newPoints);
       }
-      
-      showCoachTip(habits);
-      
-      saveState();
-      updateUI();
-      showToast(`Habits logged! +${points} points`, false, points);
     }
 
     function showCoachTip(habits) {
