@@ -2334,6 +2334,14 @@
     }
 
     function updateUI() {
+      //update button based on whether already logged in today
+      const today = new Date().toISOString().split('T')[0];
+      const logButton = document.querySelector('.submit-btn');
+      if (state.lastLogDate === today) {
+        logButton.innerHTML = 'Update Today\'s Habits';
+      } else {
+        logButton.innerHTML = 'Log Habits';
+      }
       document.getElementById('userName').textContent = state.user.name;
       document.getElementById('welcomeName').textContent = state.user.name.split(' ')[0];
       
