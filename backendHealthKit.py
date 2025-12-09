@@ -1,8 +1,3 @@
-"""
-Backend API for Fantasy Life League - HealthKit Integration
-Verifies health data from iOS app to prevent cheating
-"""
-
 from fastapi import FastAPI, HTTPException, Depends, Header
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from pydantic import BaseModel, validator
