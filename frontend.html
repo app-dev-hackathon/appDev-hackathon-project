@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fantasy Life League</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700&display=swap"
+    rel="stylesheet">
   <style>
     :root {
       --neon-cyan: #00fff0;
@@ -31,8 +34,12 @@
       --font-mono: 'Space Mono', monospace;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: var(--font-body);
       background: var(--bg-darkest);
@@ -45,9 +52,11 @@
     body::before {
       content: '';
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: 
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
         radial-gradient(ellipse at 20% 20%, rgba(0, 255, 240, 0.08) 0%, transparent 50%),
         radial-gradient(ellipse at 80% 80%, rgba(191, 0, 255, 0.08) 0%, transparent 50%);
       pointer-events: none;
@@ -57,9 +66,11 @@
     body::after {
       content: '';
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-image: 
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
         linear-gradient(rgba(0, 255, 240, 0.02) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0, 255, 240, 0.02) 1px, transparent 1px);
       background-size: 50px 50px;
@@ -67,7 +78,11 @@
       z-index: -1;
     }
 
-    .container { max-width: 1400px; margin: 0 auto; padding: 0 24px; }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
     /* Navigation */
     .navbar {
@@ -108,6 +123,7 @@
     .navbar-links {
       display: flex;
       gap: 4px;
+      align-items: center;
     }
 
     .nav-link {
@@ -125,9 +141,12 @@
       text-decoration: none;
       transition: all 0.15s ease;
       cursor: pointer;
+      border: none;
+      background: transparent;
     }
 
-    .nav-link:hover, .nav-link.active {
+    .nav-link:hover,
+    .nav-link.active {
       color: var(--neon-cyan);
       background: rgba(0, 255, 240, 0.1);
     }
@@ -146,10 +165,26 @@
     }
 
     /* Pages Container */
-    .page { display: none; padding: 32px 0; min-height: calc(100vh - 80px); }
-    .page.active { display: block; animation: fadeIn 0.3s ease; }
+    .page {
+      display: none;
+      padding: 32px 0;
+      min-height: calc(100vh - 80px);
+    }
 
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .page.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
 
     /* Common Styles */
     h1 {
@@ -166,11 +201,19 @@
       color: var(--neon-cyan);
     }
 
+    h3 {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      color: var(--neon-cyan);
+      margin-bottom: 12px;
+    }
+
     .section {
       background: var(--bg-card);
       border: 1px solid rgba(0, 255, 240, 0.1);
       border-radius: 12px;
       padding: 24px;
+      margin-bottom: 24px;
     }
 
     .section-header {
@@ -225,13 +268,9 @@
       background: rgba(0, 255, 240, 0.1);
     }
 
-    .btn-danger {
-      background: linear-gradient(135deg, var(--neon-orange), var(--neon-pink));
-      color: white;
-    }
-
     /* Form Elements */
-    input, select {
+    input,
+    select {
       font-family: var(--font-body);
       font-size: 1rem;
       padding: 12px 16px;
@@ -243,7 +282,8 @@
       transition: all 0.15s ease;
     }
 
-    input:focus, select:focus {
+    input:focus,
+    select:focus {
       outline: none;
       border-color: var(--neon-cyan);
       box-shadow: 0 0 10px rgba(0, 255, 240, 0.3);
@@ -316,8 +356,17 @@
       gap: 32px;
     }
 
-    .main-column { display: flex; flex-direction: column; gap: 32px; }
-    .sidebar-column { display: flex; flex-direction: column; gap: 24px; }
+    .main-column {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .sidebar-column {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
 
     /* Habit Form */
     .habit-grid {
@@ -335,9 +384,10 @@
       transition: all 0.15s ease;
     }
 
-    .habit-field:hover, .habit-field:focus-within {
-      border-color: var(--accent-color, var(--neon-cyan));
-      box-shadow: 0 0 15px color-mix(in srgb, var(--accent-color, var(--neon-cyan)) 20%, transparent);
+    .habit-field:hover,
+    .habit-field:focus-within {
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 15px rgba(0, 255, 240, 0.2);
     }
 
     .field-header {
@@ -368,7 +418,9 @@
       min-width: 40px;
     }
 
-    .submit-btn { width: 100%; }
+    .submit-btn {
+      width: 100%;
+    }
 
     /* Coach Tip */
     .coach-tip {
@@ -382,7 +434,9 @@
       align-items: flex-start;
     }
 
-    .tip-icon { font-size: 1.5rem; }
+    .tip-icon {
+      font-size: 1.5rem;
+    }
 
     .tip-category {
       font-family: var(--font-display);
@@ -415,16 +469,25 @@
     .match-card::before {
       content: '';
       position: absolute;
-      top: -100%; left: -100%;
-      width: 300%; height: 300%;
+      top: -100%;
+      left: -100%;
+      width: 300%;
+      height: 300%;
       background: conic-gradient(from 0deg, transparent, rgba(0, 255, 240, 0.05), transparent, rgba(191, 0, 255, 0.05), transparent);
       animation: rotate 15s linear infinite;
       pointer-events: none;
     }
 
-    @keyframes rotate { to { transform: rotate(360deg); } }
+    @keyframes rotate {
+      to {
+        transform: rotate(360deg);
+      }
+    }
 
-    .match-card > * { position: relative; z-index: 1; }
+    .match-card>* {
+      position: relative;
+      z-index: 1;
+    }
 
     .matchup-header {
       display: flex;
@@ -433,7 +496,8 @@
       margin-bottom: 24px;
     }
 
-    .week-badge, .status-badge {
+    .week-badge,
+    .status-badge {
       font-family: var(--font-display);
       font-size: 0.7rem;
       font-weight: 700;
@@ -542,64 +606,62 @@
     }
 
     /* Category Breakdown */
-    .category-breakdown h4 {
-      font-family: var(--font-display);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .category-item {
+      background: var(--bg-elevated);
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 255, 240, 0.1);
+    }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       margin-bottom: 12px;
     }
 
-    .categories { display: flex; flex-direction: column; gap: 6px; }
-
-    .category-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .category-label {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      min-width: 70px;
-    }
-
-    .category-label span {
-      font-size: 0.7rem;
-      font-weight: 600;
+    .category-name {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
       color: var(--text-secondary);
       text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
 
-    .category-bar {
-      flex: 1;
-      display: flex;
-      height: 6px;
-      background: var(--bg-elevated);
-      border-radius: 3px;
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: rgba(0, 255, 240, 0.1);
+      border-radius: 4px;
       overflow: hidden;
+      margin-bottom: 8px;
     }
 
-    .bar-fill { height: 100%; transition: width 0.3s ease; }
+    .progress-fill {
+      height: 100%;
+      background: var(--gradient-primary);
+      transition: width 0.3s ease;
+    }
 
     .category-scores {
       display: flex;
-      gap: 12px;
-      min-width: 70px;
       justify-content: space-between;
+      font-size: 0.85rem;
     }
 
-    .category-scores span {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--text-muted);
+    .category-scores .you {
+      color: var(--neon-cyan);
+      font-weight: 700;
     }
 
-    .category-scores span.highlight {
-      color: var(--neon-green);
+    .category-scores .them {
+      color: var(--electric-purple);
       font-weight: 700;
     }
 
@@ -624,10 +686,13 @@
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
+      margin: 0;
     }
 
     /* League Table */
-    .league-table { overflow-x: auto; }
+    .league-table {
+      overflow-x: auto;
+    }
 
     .league-table table {
       width: 100%;
@@ -663,11 +728,22 @@
       border-left: 3px solid var(--neon-cyan);
     }
 
-    .rank-cell { text-align: center; width: 50px; }
-    
-    .gold { color: #ffd700; }
-    .silver { color: #c0c0c0; }
-    .bronze { color: #cd7f32; }
+    .rank-cell {
+      text-align: center;
+      width: 50px;
+    }
+
+    .gold {
+      color: #ffd700;
+    }
+
+    .silver {
+      color: #c0c0c0;
+    }
+
+    .bronze {
+      color: #cd7f32;
+    }
 
     .name-cell {
       display: flex;
@@ -691,9 +767,20 @@
       text-align: center;
     }
 
-    .stat-cell.wins { color: var(--neon-green); font-weight: 700; }
-    .stat-cell.losses { color: var(--neon-pink); font-weight: 700; }
-    .stat-cell.points { color: var(--neon-cyan); font-weight: 700; }
+    .stat-cell.wins {
+      color: var(--neon-green);
+      font-weight: 700;
+    }
+
+    .stat-cell.losses {
+      color: var(--neon-pink);
+      font-weight: 700;
+    }
+
+    .stat-cell.points {
+      color: var(--neon-cyan);
+      font-weight: 700;
+    }
 
     /* Insights */
     .insights-grid {
@@ -740,247 +827,81 @@
     }
 
     /* Rules Page */
-    .rules-header {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-
-    .rules-header h1 {
-      font-size: 2.5rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 8px;
-    }
-
-    .rules-header p {
-      font-size: 1.2rem;
-      color: var(--text-secondary);
-    }
-
-    .rules-section {
-      margin-bottom: 48px;
-    }
-
-    .rules-section h2 {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 1.4rem;
-      margin-bottom: 24px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid rgba(0, 255, 240, 0.2);
-    }
-
-    .how-it-works-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-
-    .step-card {
-      display: flex;
-      gap: 16px;
-      padding: 24px;
-      background: var(--bg-card);
-      border: 1px solid rgba(0, 255, 240, 0.1);
-      border-radius: 12px;
-      transition: all 0.3s ease;
-    }
-
-    .step-card:hover {
-      border-color: rgba(0, 255, 240, 0.3);
-      transform: translateY(-4px);
-    }
-
-    .step-number {
-      flex-shrink: 0;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      font-weight: 900;
-      background: var(--gradient-primary);
-      border-radius: 12px;
-      color: var(--bg-darkest);
-    }
-
-    .step-content h3 {
-      font-family: var(--font-display);
-      font-size: 0.95rem;
-      color: var(--text-primary);
-      margin-bottom: 8px;
-    }
-
-    .step-content p {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      line-height: 1.5;
-    }
-
-    .scoring-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-
-    .scoring-card {
-      background: var(--bg-card);
-      border: 1px solid rgba(0, 255, 240, 0.1);
-      border-radius: 12px;
-      padding: 24px;
-      border-left: 4px solid var(--accent-color, var(--neon-cyan));
-    }
-
-    .scoring-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    .scoring-header h3 {
-      font-family: var(--font-display);
-      font-size: 1rem;
-    }
-
-    .scoring-rules {
-      list-style: none;
-      padding: 0;
-    }
-
-    .scoring-rules li {
-      position: relative;
-      padding-left: 20px;
-      margin-bottom: 8px;
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      line-height: 1.4;
-    }
-
-    .scoring-rules li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--accent-color, var(--neon-cyan));
-      font-weight: bold;
-    }
-
-    .tips-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 16px;
-    }
-
-    .tip-card {
-      background: var(--bg-card);
-      border: 1px solid rgba(0, 255, 240, 0.1);
-      border-radius: 12px;
-      padding: 20px;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-
-    .tip-card:hover {
-      border-color: rgba(0, 255, 240, 0.3);
-      background: var(--bg-card-hover);
-    }
-
-    .tip-emoji {
-      font-size: 2rem;
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    .tip-card h3 {
-      font-family: var(--font-display);
-      font-size: 0.8rem;
-      margin-bottom: 4px;
-    }
-
-    .tip-card p {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      line-height: 1.4;
-    }
-
-    .example-card {
-      background: var(--bg-card);
-      border: 2px solid rgba(0, 255, 240, 0.2);
-      border-radius: 16px;
-      padding: 24px;
-      max-width: 550px;
+    .rules-content {
+      max-width: 900px;
       margin: 0 auto;
     }
 
-    .example-card h3 {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      color: var(--neon-cyan);
-      text-align: center;
-      margin-bottom: 20px;
+    .rules-content p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 12px;
     }
 
-    .example-table {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
+    .rules-content ul {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      padding-left: 24px;
+      margin-bottom: 16px;
     }
 
-    .example-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr 70px;
-      gap: 12px;
-      padding: 8px 12px;
+    .scoring-table {
+      width: 100%;
+      margin: 20px 0;
+      border-collapse: collapse;
+    }
+
+    .scoring-table th {
       background: var(--bg-elevated);
-      border-radius: 4px;
-      font-size: 0.85rem;
+      color: var(--neon-cyan);
+      padding: 12px;
+      text-align: left;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .scoring-table td {
+      padding: 12px;
+      border-bottom: 1px solid rgba(0, 255, 240, 0.1);
       color: var(--text-secondary);
     }
 
-    .example-row.header {
-      background: var(--bg-darkest);
-      font-family: var(--font-display);
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .example-row.total {
-      background: linear-gradient(135deg, rgba(0, 255, 240, 0.1), rgba(191, 0, 255, 0.1));
-      border: 1px solid rgba(0, 255, 240, 0.2);
-      font-weight: 700;
-      color: var(--text-primary);
-    }
-
-    .example-row .points {
-      text-align: right;
-      font-family: var(--font-mono);
-      color: var(--neon-green);
-    }
-
-    .example-row.total .points {
-      font-size: 1rem;
-      color: var(--neon-cyan);
-    }
-
-    .example-note {
-      margin-top: 16px;
-      padding: 12px;
-      background: rgba(0, 255, 102, 0.1);
-      border: 1px solid rgba(0, 255, 102, 0.2);
+    .example-box {
+      background: rgba(0, 255, 240, 0.05);
+      border-left: 3px solid var(--neon-cyan);
+      padding: 20px;
       border-radius: 8px;
-      font-size: 0.8rem;
-      color: var(--neon-green);
+      margin: 20px 0;
+    }
+
+    .example-box h4 {
+      color: var(--neon-cyan);
+      margin-bottom: 12px;
+      font-family: var(--font-display);
+    }
+
+    .cta-box {
+      background: var(--gradient-primary);
+      padding: 24px;
+      border-radius: 12px;
+      margin-top: 32px;
       text-align: center;
     }
 
-    /* Toast Notification */
+    .cta-box h4 {
+      color: var(--bg-darkest);
+      font-family: var(--font-display);
+      margin-bottom: 8px;
+    }
+
+    .cta-box p {
+      color: rgba(0, 0, 0, 0.7);
+      margin: 0;
+    }
+
+    /* Toast */
     .toast {
       position: fixed;
       bottom: 24px;
@@ -995,211 +916,32 @@
       display: none;
     }
 
-    .toast.show { display: block; }
+    .toast.show {
+      display: block;
+    }
 
-    .toast.error { border-color: var(--neon-pink); }
+    .toast.error {
+      border-color: var(--neon-pink);
+      box-shadow: 0 0 30px rgba(255, 0, 170, 0.3);
+    }
 
     @keyframes slideIn {
-      from { transform: translateX(100%); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
     }
 
     @keyframes fadeOut {
-      to { opacity: 0; transform: translateY(20px); }
-    }
-
-    .toast-content {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .toast-icon { font-size: 1.5rem; }
-
-    .toast-message {
-      font-size: 0.9rem;
-      color: var(--text-primary);
-    }
-
-    .toast-points {
-      font-family: var(--font-display);
-      font-size: 0.75rem;
-      color: var(--neon-green);
-      margin-top: 4px;
-    }
-
-    /* Health Integration Styles */
-    .health-sync-card {
-      background: linear-gradient(135deg, rgba(0, 255, 240, 0.05), rgba(191, 0, 255, 0.05));
-      border: 2px solid rgba(0, 255, 240, 0.2);
-      border-radius: 16px;
-      padding: 24px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .health-sync-card::before {
-      content: '';
-      position: absolute;
-      top: 0; right: 0;
-      width: 200px; height: 200px;
-      background: radial-gradient(circle, rgba(0, 255, 240, 0.1) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .health-sync-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 20px;
-    }
-
-    .health-sync-title {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .health-sync-title h3 {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .sync-status {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      background: rgba(0, 255, 240, 0.1);
-      border: 1px solid var(--neon-cyan);
-      border-radius: 6px;
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      font-weight: 700;
-      color: var(--neon-cyan);
-      letter-spacing: 0.05em;
-    }
-
-    .sync-status.synced {
-      background: rgba(0, 255, 102, 0.1);
-      border-color: var(--neon-green);
-      color: var(--neon-green);
-    }
-
-    .sync-status.error {
-      background: rgba(255, 0, 170, 0.1);
-      border-color: var(--neon-pink);
-      color: var(--neon-pink);
-    }
-
-    .health-metrics {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    .health-metric {
-      padding: 16px;
-      background: var(--bg-elevated);
-      border: 1px solid rgba(0, 255, 240, 0.1);
-      border-radius: 10px;
-      transition: all 0.3s ease;
-    }
-
-    .health-metric:hover {
-      border-color: var(--accent-color, var(--neon-cyan));
-      transform: translateY(-2px);
-      box-shadow: 0 4px 20px rgba(0, 255, 240, 0.1);
-    }
-
-    .metric-header {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 8px;
-    }
-
-    .metric-label {
-      font-size: 0.65rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    .metric-value {
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      font-weight: 700;
-      display: flex;
-      align-items: baseline;
-      gap: 4px;
-    }
-
-    .metric-unit {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      font-weight: 400;
-    }
-
-    .metric-points {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      color: var(--neon-green);
-      margin-top: 4px;
-    }
-
-    .sync-actions {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .btn-sync {
-      flex: 1;
-      background: var(--gradient-primary);
-      color: var(--bg-darkest);
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: all 0.3s ease;
-    }
-
-    .btn-sync:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 30px rgba(0, 255, 240, 0.5);
-    }
-
-    .btn-sync:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .sync-info {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      text-align: center;
-      margin-top: 12px;
-    }
-
-    .health-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 2px 8px;
-      background: linear-gradient(135deg, rgba(0, 255, 240, 0.2), rgba(191, 0, 255, 0.2));
-      border: 1px solid var(--neon-cyan);
-      border-radius: 4px;
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      font-weight: 700;
-      color: var(--neon-cyan);
+      to {
+        opacity: 0;
+        transform: translateY(20px);
+      }
     }
 
     .loading-spinner {
@@ -1213,724 +955,1115 @@
     }
 
     @keyframes spin {
-      to { transform: rotate(360deg); }
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     /* Responsive */
     @media (max-width: 1024px) {
-      .dashboard-grid { grid-template-columns: 1fr; }
-      .insights-grid { grid-template-columns: repeat(2, 1fr); }
-      .health-metrics { grid-template-columns: repeat(2, 1fr); }
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .insights-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 768px) {
-      .dashboard-header { flex-direction: column; }
-      .quick-stats { width: 100%; }
-      .scoreboard { flex-direction: column; }
-      .navbar-links { gap: 2px; }
-      .nav-link { padding: 6px 8px; font-size: 0.6rem; }
-      .nav-link span { display: none; }
-      .insights-grid { grid-template-columns: 1fr; }
-      .health-metrics { grid-template-columns: 1fr; }
+      .dashboard-header {
+        flex-direction: column;
+      }
+
+      .quick-stats {
+        width: 100%;
+      }
+
+      .scoreboard {
+        flex-direction: column;
+      }
+
+      .navbar-links {
+        gap: 2px;
+      }
+
+      .nav-link {
+        padding: 6px 8px;
+        font-size: 0.6rem;
+      }
+
+      .nav-link span {
+        display: none;
+      }
+
+      .insights-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .category-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
+
 <body>
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="navbar-container">
-      <a href="#" class="navbar-logo" onclick="showPage('dashboard'); return false;">
-        <span style="color: var(--neon-cyan); font-size: 1.5rem;">⚡</span>
-        <span class="logo-text">FLL</span>
-      </a>
-      
-      <div class="navbar-links">
-        <a class="nav-link active" data-page="dashboard">🏠 <span>Dashboard</span></a>
-        <a class="nav-link" data-page="league">🏆 <span>League</span></a>
-        <a class="nav-link" data-page="matchup">🎯 <span>Matchup</span></a>
-        <a class="nav-link" data-page="insights">📊 <span>Insights</span></a>
-        <a class="nav-link" data-page="rules">📖 <span>Rules</span></a>
+  <!-- ============ AUTH SCREEN ============ -->
+  <div id="authScreen"
+    style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #0a0015 0%, #1a0030 50%, #0a0015 100%); position: fixed; top: 0; left: 0; width: 100%; z-index: 2000;">
+    <div
+      style="background: rgba(15, 15, 30, 0.9); backdrop-filter: blur(20px); border: 1px solid rgba(191, 0, 255, 0.3); border-radius: 20px; padding: 48px; max-width: 450px; width: 100%; box-shadow: 0 20px 60px rgba(191, 0, 255, 0.3);">
+      <div style="text-align: center; margin-bottom: 32px;">
+        <h1
+          style="font-size: 2rem; background: linear-gradient(135deg, #bf00ff 0%, #00fff0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0;">
+          ⚡ Fantasy Life League</h1>
+        <p style="color: #606080; margin-top: 8px;">Track habits, compete with friends</p>
       </div>
-      
-      <div class="user-info">
-        <span style="color: var(--neon-cyan);">👤</span>
-        <span id="userName">Player</span>
+
+      <div id="authError"
+        style="display: none; background: rgba(255, 0, 0, 0.1); border: 1px solid rgba(255, 0, 0, 0.3); border-radius: 8px; padding: 12px; color: #ff6b6b; margin-bottom: 16px;">
+      </div>
+
+      <!-- Login form -->
+      <form id="loginForm" style="display: flex; flex-direction: column; gap: 20px;">
+        <div>
+          <label style="font-size: 0.85rem; color: #a0a0c0;">Email</label>
+          <input type="email" id="loginEmail" required placeholder="you@example.com"
+            style="background: #1e1e3f; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 12px; color: white; width: 100%;">
+        </div>
+        <div>
+          <label style="font-size: 0.85rem; color: #a0a0c0;">Password</label>
+          <input type="password" id="loginPassword" required placeholder="••••••••"
+            style="background: #1e1e3f; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 12px; color: white; width: 100%;">
+        </div>
+        <button type="submit"
+          style="background: linear-gradient(135deg, #bf00ff, #ff00aa); color: white; border: none; border-radius: 8px; padding: 14px; font-weight: 600; cursor: pointer;">
+          Sign In
+        </button>
+      </form>
+
+      <!-- Signup form -->
+      <form id="signupForm" style="display: none; flex-direction: column; gap: 20px;">
+        <div>
+          <label style="font-size: 0.85rem; color: #a0a0c0;">Name</label>
+          <input type="text" id="signupName" required placeholder="John Doe"
+            style="background: #1e1e3f; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 12px; color: white; width: 100%;">
+        </div>
+        <div>
+          <label style="font-size: 0.85rem; color: #a0a0c0;">Email</label>
+          <input type="email" id="signupEmail" required placeholder="you@example.com"
+            style="background: #1e1e3f; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 12px; color: white; width: 100%;">
+        </div>
+        <div>
+          <label style="font-size: 0.85rem; color: #a0a0c0;">Password</label>
+          <input type="password" id="signupPassword" required minlength="6" placeholder="••••••••"
+            style="background: #1e1e3f; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 12px; color: white; width: 100%;">
+        </div>
+        <button type="submit"
+          style="background: linear-gradient(135deg, #bf00ff, #ff00aa); color: white; border: none; border-radius: 8px; padding: 14px; font-weight: 600; cursor: pointer;">
+          Create Account
+        </button>
+      </form>
+
+      <div style="text-align: center; margin-top: 24px; color: #606080;">
+        <span id="authToggleText">Don't have an account?</span>
+        <button type="button" id="authToggle"
+          style="background: none; border: none; color: #00fff0; cursor: pointer; text-decoration: underline;">
+          Sign Up
+        </button>
       </div>
     </div>
-  </nav>
+  </div>
+
+  <!-- ============ MAIN APP ============ -->
+  <div id="mainApp" style="display: none;">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="#" class="navbar-logo">
+          <span class="logo-text">⚡ FLL</span>
+        </a>
+        <div class="navbar-links">
+          <button class="nav-link active" data-page="dashboard">
+            <span>📊</span> Dashboard
+          </button>
+          <button class="nav-link" data-page="league">
+            <span>🏆</span> League
+          </button>
+          <button class="nav-link" data-page="matchup">
+            <span>⚔️</span> Matchup
+          </button>
+          <button class="nav-link" data-page="insights">
+            <span>📈</span> Insights
+          </button>
+          <button class="nav-link" data-page="rules">
+            <span>📖</span> Rules
+          </button>
+          <div class="user-info">
+            <span id="userName">Player</span>
+          </div>
+          <button class="nav-link" onclick="logout()" style="color: #ff6b6b; border: 1px solid rgba(255,0,0,0.3);">
+            Logout
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Dashboard Page -->
+    <div id="dashboard" class="page active">
+      <div class="container">
+        <div class="dashboard-header">
+          <div>
+            <h1>Welcome back, <span id="welcomeName">Player</span>!</h1>
+            <p style="color: var(--text-secondary);">Week <span id="weekNumber">1</span> •
+              <span style="color: var(--neon-cyan);">Season 1</span>
+            </p>
+          </div>
+          <div class="quick-stats">
+            <div class="quick-stat">
+              <div class="stat-icon" style="background: rgba(0, 255, 240, 0.1); color: var(--neon-cyan);">🔥</div>
+              <div class="stat-info">
+                <span class="stat-value" id="streakValue">0</span>
+                <span class="stat-label">Day Streak</span>
+              </div>
+            </div>
+            <div class="quick-stat">
+              <div class="stat-icon" style="background: rgba(191, 0, 255, 0.1); color: var(--electric-purple);">⚡</div>
+              <div class="stat-info">
+                <span class="stat-value" id="weekPoints">0</span>
+                <span class="stat-label">Week Points</span>
+              </div>
+            </div>
+            <div class="quick-stat">
+              <div class="stat-icon" style="background: rgba(255, 0, 170, 0.1); color: var(--neon-pink);">🏆</div>
+              <div class="stat-info">
+                <span class="stat-value" id="record">0-0</span>
+                <span class="stat-label">Record</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <!-- Main Column -->
+          <div class="main-column">
+            <!-- Health Sync Card (visual only) -->
+            <div id="healthSyncCard" class="section">
+              <!-- Populated by JS -->
+            </div>
+
+            <!-- Matchup Card (Preview) -->
+            <div class="match-card" id="fullMatchCard">
+              <!-- Populated by JS -->
+            </div>
+
+            <!-- Habit Log -->
+            <div class="section">
+              <div class="section-header">
+                <h2>📝 Log Habits</h2>
+                <span id="todayPoints"
+                  style="font-family: var(--font-mono); color: var(--neon-green); font-weight: 700;">+0.0 pts</span>
+              </div>
+              <div class="habit-grid">
+                <div class="habit-field">
+                  <div class="field-header">
+                    <span>🌙</span>
+                    <label>Sleep</label>
+                  </div>
+                  <div class="input-wrapper">
+                    <input type="number" id="sleep" step="0.5" min="0" max="24" placeholder="0">
+                    <span class="unit">hrs</span>
+                  </div>
+                </div>
+                <div class="habit-field">
+                  <div class="field-header">
+                    <span>📚</span>
+                    <label>Study</label>
+                  </div>
+                  <div class="input-wrapper">
+                    <input type="number" id="study" step="0.5" min="0" max="24" placeholder="0">
+                    <span class="unit">hrs</span>
+                  </div>
+                </div>
+                <div class="habit-field">
+                  <div class="field-header">
+                    <span>🏋️</span>
+                    <label>Exercise</label>
+                  </div>
+                  <div class="input-wrapper">
+                    <input type="number" id="exercise" step="0.5" min="0" max="24" placeholder="0">
+                    <span class="unit">hrs</span>
+                  </div>
+                </div>
+                <div class="habit-field">
+                  <div class="field-header">
+                    <span>💧</span>
+                    <label>Hydration</label>
+                  </div>
+                  <div class="input-wrapper">
+                    <input type="number" id="hydration" min="0" max="20" placeholder="0">
+                    <span class="unit">cups</span>
+                  </div>
+                </div>
+                <div class="habit-field">
+                  <div class="field-header">
+                    <span>🍎</span>
+                    <label>Nutrition</label>
+                  </div>
+                  <div class="input-wrapper">
+                    <input type="number" id="nutrition" min="0" max="10" placeholder="0">
+                    <span class="unit">/10</span>
+                  </div>
+                </div>
+                <div class="habit-field">
+                  <div class="field-header">
+                    <span>🧠</span>
+                    <label>Mind</label>
+                  </div>
+                  <div class="input-wrapper">
+                    <input type="number" id="mindfulness" min="0" max="120" placeholder="0">
+                    <span class="unit">min</span>
+                  </div>
+                </div>
+                <div class="habit-field">
+                  <div class="field-header">
+                    <span>📱</span>
+                    <label>Screen</label>
+                  </div>
+                  <div class="input-wrapper">
+                    <input type="number" id="screentime" step="0.5" min="0" max="24" placeholder="0">
+                    <span class="unit">hrs</span>
+                  </div>
+                </div>
+              </div>
+
+              <div id="coachTip" class="coach-tip" style="display: none;">
+                <div class="tip-icon">💡</div>
+                <div class="tip-content">
+                  <span class="tip-category" id="tipCategory">Tip</span>
+                  <p id="tipMessage">Message</p>
+                </div>
+              </div>
+
+              <button class="btn btn-primary submit-btn" onclick="logHabits()">Log Habits</button>
+            </div>
+          </div>
+
+          <!-- Sidebar -->
+          <div class="sidebar-column">
+            <div class="sidebar-card">
+              <div class="card-header">
+                <h3>Weekly Progress</h3>
+              </div>
+              <div style="text-align: center; margin-bottom: 16px;">
+                <span id="daysLogged"
+                  style="font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--text-primary);">0/7</span>
+                <span
+                  style="display: block; font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Days
+                  Logged</span>
+              </div>
+              <div style="text-align: center;">
+                <span id="totalWeekPts"
+                  style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--neon-cyan);">0.0</span>
+                <span
+                  style="display: block; font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Total
+                  Points</span>
+              </div>
+            </div>
+
+            <div class="sidebar-card">
+              <div class="card-header">
+                <h3>Match History</h3>
+              </div>
+              <div id="matchHistory" style="display: flex; flex-direction: column; gap: 8px;">
+                <div style="font-size: 0.85rem; color: var(--text-muted); text-align:center;">
+                  Match history coming soon.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- League Page -->
+    <div id="league" class="page">
+      <div class="container">
+        <h1>🏆 League Standings</h1>
+
+        <div class="section">
+          <div class="section-header">
+            <div>
+              <h2 id="leagueName">No League</h2>
+              <p style="color: var(--text-secondary); font-size: 0.9rem;">Invite Code:
+                <span id="inviteCode" style="font-family: var(--font-mono); color: var(--neon-cyan); cursor: pointer;"
+                  onclick="copyCode()">---</span>
+              </p>
+            </div>
+            <span id="playerCount"
+              style="font-family: var(--font-display); font-size: 0.9rem; color: var(--text-muted);">👥 0
+              Players</span>
+          </div>
+
+          <!-- League Actions -->
+          <div style="margin-bottom: 24px; display: flex; gap: 12px;">
+            <button class="btn btn-primary" onclick="createLeague()">➕ Create League</button>
+            <button class="btn btn-secondary" onclick="joinLeague()">🔗 Join League</button>
+          </div>
+
+          <div class="league-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Player</th>
+                  <th>W</th>
+                  <th>L</th>
+                  <th>Total Pts</th>
+                  <th>Wk Pts</th>
+                </tr>
+              </thead>
+              <tbody id="standingsBody">
+                <tr>
+                  <td colspan="6" style="text-align:center; padding: 20px;">
+                    No players yet. Create or join a league!
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Matchup Page (NEW!) -->
+    <div id="matchup" class="page">
+      <div class="container">
+        <h1>⚔️ This Week's Matchup</h1>
+
+        <div class="section">
+          <div class="matchup-header">
+            <span class="week-badge">Week <span id="matchupWeek">1</span></span>
+            <span style="color: var(--electric-purple); font-size: 1.5rem;">⚔️</span>
+            <span class="status-badge" id="matchupStatus">TBD</span>
+          </div>
+
+          <div class="scoreboard">
+            <div class="player-score user" id="userScoreCard">
+              <span class="player-name" id="matchupUserName">You</span>
+              <span class="score" id="matchupUserScore">0.0</span>
+              <span class="score-label">points</span>
+            </div>
+            <div class="vs-divider"><span>VS</span></div>
+            <div class="player-score opponent" id="oppScoreCard">
+              <span class="player-name" id="matchupOppName">Opponent</span>
+              <span class="score" id="matchupOppScore">0.0</span>
+              <span class="score-label">points</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 32px;">
+            <h3>📊 Category Breakdown</h3>
+            <div class="category-grid" id="categoryBreakdown">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Insights Page -->
+    <div id="insights" class="page">
+      <div class="container">
+        <h1>📈 Performance Insights</h1>
+
+        <div class="insights-grid">
+          <div class="insight-card">
+            <div class="insight-icon">🔥</div>
+            <div class="insight-info">
+              <span class="insight-value" id="insightStreak">0</span>
+              <span class="insight-label">Day Streak</span>
+            </div>
+          </div>
+          <div class="insight-card">
+            <div class="insight-icon">📅</div>
+            <div class="insight-info">
+              <span class="insight-value" id="insightDays">0</span>
+              <span class="insight-label">Days Logged</span>
+            </div>
+          </div>
+          <div class="insight-card">
+            <div class="insight-icon">⭐</div>
+            <div class="insight-info">
+              <span class="insight-value" id="bestHabit">-</span>
+              <span class="insight-label">Best Habit</span>
+            </div>
+          </div>
+          <div class="insight-card">
+            <div class="insight-icon">⚠️</div>
+            <div class="insight-info">
+              <span class="insight-value" id="worstHabit">-</span>
+              <span class="insight-label">Needs Focus</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <div class="main-column">
+            <div class="section">
+              <h2>📊 Habit Averages</h2>
+              <div class="habit-grid" id="averagesGrid">
+                <div style="color: var(--text-muted); font-size: 0.85rem;">
+                  Averages will show as you log more days.
+                </div>
+              </div>
+            </div>
+
+            <div class="section">
+              <h2>📈 Category Performance</h2>
+              <div class="category-grid">
+                <div class="category-item">
+                  <div class="category-header">
+                    <span class="category-name">😴 Sleep</span>
+                    <span style="color: var(--neon-cyan); font-weight: 700;">90%</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: 90%;"></div>
+                  </div>
+                  <p style="font-size: 0.8rem; color: var(--text-muted);">7.8 / 8.0 hrs average</p>
+                </div>
+                <div class="category-item">
+                  <div class="category-header">
+                    <span class="category-name">📚 Study</span>
+                    <span style="color: var(--neon-cyan); font-weight: 700;">75%</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: 75%;"></div>
+                  </div>
+                  <p style="font-size: 0.8rem; color: var(--text-muted);">1.5 / 2.0 hrs average</p>
+                </div>
+                <div class="category-item">
+                  <div class="category-header">
+                    <span class="category-name">🏋️ Exercise</span>
+                    <span style="color: var(--neon-cyan); font-weight: 700;">65%</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: 65%;"></div>
+                  </div>
+                  <p style="font-size: 0.8rem; color: var(--text-muted);">0.65 / 1.0 hrs average</p>
+                </div>
+                <div class="category-item">
+                  <div class="category-header">
+                    <span class="category-name">💧 Hydration</span>
+                    <span style="color: var(--neon-cyan); font-weight: 700;">80%</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: 80%;"></div>
+                  </div>
+                  <p style="font-size: 0.8rem; color: var(--text-muted);">6.4 / 8 cups average</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-column">
+            <div class="section">
+              <h2>💡 AI Coach Tips</h2>
+              <div id="recommendations" style="display: flex; flex-direction: column; gap: 12px;">
+                <div
+                  style="padding:12px;border-radius:8px;background:rgba(0,255,240,0.05);border:1px solid rgba(0,255,240,0.2);font-size:0.85rem;color:var(--text-secondary);">
+                  Your sleep consistency is excellent! Keep it up.
+                </div>
+                <div
+                  style="padding:12px;border-radius:8px;background:rgba(0,255,240,0.05);border:1px solid rgba(0,255,240,0.2);font-size:0.85rem;color:var(--text-secondary);">
+                  Try adding 30 more minutes of study time to hit your goals.
+                </div>
+                <div
+                  style="padding:12px;border-radius:8px;background:rgba(0,255,240,0.05);border:1px solid rgba(0,255,240,0.2);font-size:0.85rem;color:var(--text-secondary);">
+                  Morning workouts correlate with your best days!
+                </div>
+                <div
+                  style="padding:12px;border-radius:8px;background:rgba(0,255,240,0.05);border:1px solid rgba(0,255,240,0.2);font-size:0.85rem;color:var(--text-secondary);">
+                  Your hydration dips on weekends - set reminders!
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rules Page (NEW!) -->
+    <div id="rules" class="page">
+      <div class="container">
+        <div class="rules-content">
+          <h1 style="margin-bottom: 24px;">📖 Fantasy Life League Rules</h1>
+
+          <div class="section">
+            <h3>🎯 How It Works</h3>
+            <p>Fantasy Life League is a habit-tracking game where you compete with friends by logging daily activities.
+              Each habit you complete earns points, and whoever has the most points at the end of the week wins!</p>
+          </div>
+
+          <div class="section">
+            <h3>⚡ Scoring System</h3>
+            <p>Each habit category can earn up to <strong>10 points per day</strong>. Your score is based on how well
+              you meet your personal goals:</p>
+
+            <table class="scoring-table">
+              <thead>
+                <tr>
+                  <th>Habit</th>
+                  <th>Goal</th>
+                  <th>Scoring</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>😴 Sleep</td>
+                  <td>8 hours</td>
+                  <td>100% of goal = 10 pts. Can earn up to 15 pts at 150% of goal</td>
+                </tr>
+                <tr>
+                  <td>📚 Study</td>
+                  <td>2 hours</td>
+                  <td>100% of goal = 10 pts. Can earn up to 15 pts at 150% of goal</td>
+                </tr>
+                <tr>
+                  <td>🏋️ Exercise</td>
+                  <td>1 hour</td>
+                  <td>100% of goal = 10 pts. Can earn up to 15 pts at 150% of goal</td>
+                </tr>
+                <tr>
+                  <td>💧 Hydration</td>
+                  <td>8 glasses</td>
+                  <td>100% of goal = 10 pts. Can earn up to 15 pts at 150% of goal</td>
+                </tr>
+                <tr>
+                  <td>🍎 Nutrition</td>
+                  <td>3 meals</td>
+                  <td>All-or-nothing: 3+ meals = 10 pts, otherwise 0</td>
+                </tr>
+                <tr>
+                  <td>🧠 Mindfulness</td>
+                  <td>15 minutes</td>
+                  <td>Bonus category - adds to total based on time logged</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="example-box">
+              <h4>📝 Example Calculation</h4>
+              <p><strong>Your Daily Log:</strong></p>
+              <ul>
+                <li>Sleep: 8 hours (100% of goal) = <strong>10 points</strong></li>
+                <li>Study: 3 hours (150% of goal) = <strong>15 points</strong></li>
+                <li>Exercise: 0.5 hours (50% of goal) = <strong>5 points</strong></li>
+                <li>Hydration: 6 glasses (75% of goal) = <strong>7.5 points</strong></li>
+                <li>Nutrition: 3 meals (met goal) = <strong>10 points</strong></li>
+                <li>Mindfulness: 20 minutes = <strong>2 points</strong></li>
+              </ul>
+              <p style="margin-top: 10px;"><strong>Total for the day: 49.5 points</strong></p>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3>🏆 League Competition</h3>
+            <p><strong>Weekly Matchups:</strong> Each week, you're paired with another player in your league. The player
+              with the higher weekly score wins the matchup.</p>
+            <p><strong>Standings:</strong> Your rank is determined by your win-loss record, with total points as the
+              tiebreaker.</p>
+            <p><strong>Championships:</strong> At the end of the season (12 weeks), the top players compete in a playoff
+              bracket!</p>
+          </div>
+
+          <div class="section">
+            <h3>📅 Important Rules</h3>
+            <ul>
+              <li><strong>Logging Window:</strong> You can log habits once per day. You can update your entry until
+                midnight.</li>
+              <li><strong>Week Start:</strong> Weeks run Monday to Sunday. Scores reset every Monday.</li>
+              <li><strong>Consistency Bonus:</strong> Log all 7 days to earn a 10-point bonus!</li>
+              <li><strong>Custom Goals:</strong> You can adjust your personal goals in settings, but they affect point
+                calculations.</li>
+              <li><strong>Fair Play:</strong> Be honest! This is about self-improvement, not just winning.</li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <h3>🎮 Tips for Success</h3>
+            <ul>
+              <li>Set realistic goals that challenge but don't overwhelm you</li>
+              <li>Log your habits at the same time each day to build consistency</li>
+              <li>Focus on your weakest category - small improvements add up!</li>
+              <li>Check your Insights page for personalized recommendations</li>
+              <li>Engage with your league - friendly competition motivates everyone!</li>
+            </ul>
+          </div>
+
+          <div class="cta-box">
+            <h4>💪 Ready to Start?</h4>
+            <p>Head to the Dashboard, log your first habits, and start building a better you while competing with
+              friends!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Toast Notification -->
-  <div id="toast" class="toast">
-    <div class="toast-content">
-      <span class="toast-icon">✅</span>
-      <div>
-        <div class="toast-message" id="toastMessage">Habits logged successfully!</div>
-        <div class="toast-points" id="toastPoints"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Dashboard Page -->
-  <div id="dashboard" class="page active">
-    <div class="container">
-      <div class="dashboard-header">
-        <div class="welcome-section">
-          <h1>Welcome back, <span id="welcomeName">Player</span>!</h1>
-          <p style="font-size: 1.1rem; color: var(--text-secondary);">Ready to level up today?</p>
-        </div>
-        
-        <div class="quick-stats">
-          <div class="quick-stat">
-            <div class="stat-icon" style="background: rgba(255, 102, 0, 0.1);">🔥</div>
-            <div class="stat-info">
-              <span class="stat-value" style="color: var(--neon-orange);" id="streakValue">0</span>
-              <span class="stat-label">Day Streak</span>
-            </div>
-          </div>
-          <div class="quick-stat">
-            <div class="stat-icon" style="background: rgba(0, 255, 102, 0.1);">📈</div>
-            <div class="stat-info">
-              <span class="stat-value" style="color: var(--neon-green);" id="weekPoints">0.0</span>
-              <span class="stat-label">Week Points</span>
-            </div>
-          </div>
-          <div class="quick-stat">
-            <div class="stat-icon" style="background: rgba(255, 215, 0, 0.1);">🏆</div>
-            <div class="stat-info">
-              <span class="stat-value" style="color: #ffd700;" id="record">0-0</span>
-              <span class="stat-label">Record</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="dashboard-grid">
-        <div class="main-column">
-          <!-- Habit Log Section -->
-          <div class="section">
-            <div class="section-header">
-              <h2>🎯 Log Today's Habits</h2>
-              <span id="todayPoints" style="font-family: var(--font-mono); font-size: 0.85rem; padding: 4px 16px; background: rgba(0, 255, 102, 0.1); border: 1px solid var(--neon-green); border-radius: 4px; color: var(--neon-green);">+0.0 pts</span>
-            </div>
-            
-            <div class="habit-grid">
-              <div class="habit-field" style="--accent-color: #bf00ff;">
-                <div class="field-header">
-                  <span style="color: #bf00ff;">🌙</span>
-                  <label>Sleep</label>
-                </div>
-                <div class="input-wrapper">
-                  <input type="number" id="sleep" value="" step="0.5" min="0" max="24" placeholder="7.5">
-                  <span class="unit">hours</span>
-                </div>
-              </div>
-              
-              <div class="habit-field" style="--accent-color: #00fff0;">
-                <div class="field-header">
-                  <span style="color: #00fff0;">📚</span>
-                  <label>Study</label>
-                </div>
-                <div class="input-wrapper">
-                  <input type="number" id="study" value="" step="0.5" min="0" max="24" placeholder="3">
-                  <span class="unit">hours</span>
-                </div>
-              </div>
-              
-              <div class="habit-field" style="--accent-color: #00ff66;">
-                <div class="field-header">
-                  <span style="color: #00ff66;">🏋️</span>
-                  <label>Exercise</label>
-                </div>
-                <div class="input-wrapper">
-                  <input type="number" id="exercise" value="" step="0.25" min="0" max="8" placeholder="1">
-                  <span class="unit">hours</span>
-                </div>
-              </div>
-              
-              <div class="habit-field" style="--accent-color: #00b8ff;">
-                <div class="field-header">
-                  <span style="color: #00b8ff;">💧</span>
-                  <label>Hydration</label>
-                </div>
-                <div class="input-wrapper">
-                  <input type="number" id="hydration" value="" step="1" min="0" max="20" placeholder="8">
-                  <span class="unit">cups</span>
-                </div>
-              </div>
-              
-              <div class="habit-field" style="--accent-color: #ff6600;">
-                <div class="field-header">
-                  <span style="color: #ff6600;">🍎</span>
-                  <label>Nutrition</label>
-                </div>
-                <div class="input-wrapper">
-                  <input type="number" id="nutrition" value="" step="0.1" min="0" max="1" placeholder="0.8">
-                  <span class="unit">0-1</span>
-                </div>
-              </div>
-              
-              <div class="habit-field" style="--accent-color: #ffff00;">
-                <div class="field-header">
-                  <span style="color: #ffff00;">🧠</span>
-                  <label>Mindfulness</label>
-                </div>
-                <div class="input-wrapper">
-                  <input type="number" id="mindfulness" value="" step="5" min="0" max="120" placeholder="15">
-                  <span class="unit">mins</span>
-                </div>
-              </div>
-              
-              <div class="habit-field" style="--accent-color: #ff00aa;">
-                <div class="field-header">
-                  <span style="color: #ff00aa;">📱</span>
-                  <label>Screen Time</label>
-                </div>
-                <div class="input-wrapper">
-                  <input type="number" id="screentime" value="" step="0.5" min="0" max="24" placeholder="4">
-                  <span class="unit">hours</span>
-                </div>
-              </div>
-            </div>
-            
-            <button class="btn btn-primary submit-btn" onclick="logHabits()">💾 Log Habits</button>
-            
-            <div class="coach-tip" id="coachTip" style="display: none;">
-              <div class="tip-icon">💡</div>
-              <div class="tip-content">
-                <span class="tip-category" id="tipCategory">Tip</span>
-                <p id="tipMessage"></p>
-              </div>
-            </div>
-          </div>
-
-          <!-- HEALTH DATA SYNC CARD - NEW! -->
-          <div class="section health-sync-card" id="healthSyncCard">
-            <div class="health-sync-header">
-              <div class="health-sync-title">
-                <span style="font-size: 1.5rem;">🏃</span>
-                <h3>Health Data</h3>
-                <span class="health-badge">📱 iOS App</span>
-              </div>
-              <span class="sync-status">○ Not Synced</span>
-            </div>
-            
-            <div class="health-metrics">
-              <div class="health-metric" style="--accent-color: #00ff66;">
-                <div class="metric-header">
-                  <span style="color: #00ff66;">👟</span>
-                  <span class="metric-label">Steps</span>
-                </div>
-                <div class="metric-value" style="color: #00ff66;">
-                  0
-                  <span class="metric-unit">steps</span>
-                </div>
-                <div class="metric-points">+0 pts</div>
-              </div>
-              
-              <div class="health-metric" style="--accent-color: #ff6600;">
-                <div class="metric-header">
-                  <span style="color: #ff6600;">🔥</span>
-                  <span class="metric-label">Calories</span>
-                </div>
-                <div class="metric-value" style="color: #ff6600;">
-                  0
-                  <span class="metric-unit">kcal</span>
-                </div>
-                <div class="metric-points">+0 pts</div>
-              </div>
-              
-              <div class="health-metric" style="--accent-color: #00b8ff;">
-                <div class="metric-header">
-                  <span style="color: #00b8ff;">📏</span>
-                  <span class="metric-label">Distance</span>
-                </div>
-                <div class="metric-value" style="color: #00b8ff;">
-                  0.0
-                  <span class="metric-unit">km</span>
-                </div>
-                <div class="metric-points">+0 pts</div>
-              </div>
-              
-              <div class="health-metric" style="--accent-color: #bf00ff;">
-                <div class="metric-header">
-                  <span style="color: #bf00ff;">💪</span>
-                  <span class="metric-label">Workouts</span>
-                </div>
-                <div class="metric-value" style="color: #bf00ff;">
-                  0
-                  <span class="metric-unit">today</span>
-                </div>
-                <div class="metric-points">+0 pts</div>
-              </div>
-            </div>
-            
-            <div class="sync-actions">
-              <button class="btn btn-sync" onclick="syncHealthData()">
-                🔄 Sync Health Data
-              </button>
-            </div>
-            
-            <div class="sync-info">
-              📱 Download our iOS app to sync your Apple Health data
-            </div>
-          </div>
-
-          <!-- Matchup Preview -->
-          <div class="section">
-            <div class="section-header">
-              <h2>🏆 This Week's Matchup</h2>
-            </div>
-            
-            <div class="match-card">
-              <div class="matchup-header">
-                <span class="week-badge" id="matchWeek">Week 48</span>
-                <span style="color: var(--electric-purple); font-size: 1.25rem;">⚔️</span>
-                <span class="status-badge winning" id="matchStatus">Winning</span>
-              </div>
-              
-              <div class="scoreboard">
-                <div class="player-score user leading" id="userScoreCard">
-                  <span class="player-name" id="userMatchName">You</span>
-                  <span class="score" id="userScore">0.0</span>
-                  <span class="score-label">points</span>
-                </div>
-                <div class="vs-divider"><span>VS</span></div>
-                <div class="player-score opponent" id="oppScoreCard">
-                  <span class="player-name" id="oppName">Opponent</span>
-                  <span class="score" id="oppScore">0.0</span>
-                  <span class="score-label">points</span>
-                </div>
-              </div>
-              
-              <div class="category-breakdown">
-                <h4>Category Breakdown</h4>
-                <div class="categories" id="categoryBreakdown">
-                  <!-- Populated by JS -->
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="sidebar-column">
-          <div class="sidebar-card">
-            <div class="card-header">
-              <span style="color: var(--neon-cyan);">💡</span>
-              <h3>Quick Tips</h3>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 12px;" id="insightsList">
-              <div style="padding: 12px; background: var(--bg-elevated); border-radius: 8px; border-left: 3px solid var(--neon-pink);">
-                <span style="font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase;">Sleep</span>
-                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 2px;">Aim for 7-9 hours for optimal points!</p>
-              </div>
-              <div style="padding: 12px; background: var(--bg-elevated); border-radius: 8px; border-left: 3px solid var(--neon-yellow);">
-                <span style="font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase;">Exercise</span>
-                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 2px;">Exercise gives 2x points per hour!</p>
-              </div>
-              <div style="padding: 12px; background: var(--bg-elevated); border-radius: 8px; border-left: 3px solid var(--neon-cyan);">
-                <span style="font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase;">Health Sync</span>
-                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 2px;">Sync Apple Health for bonus points!</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="sidebar-card">
-            <div class="card-header">
-              <span style="color: var(--neon-cyan);">📊</span>
-              <h3 id="weekOverviewTitle">Week Overview</h3>
-            </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-              <div style="padding: 12px; background: var(--bg-elevated); border-radius: 8px; text-align: center;">
-                <span style="font-size: 0.6rem; color: var(--text-muted); display: block; margin-bottom: 4px;">Days Logged</span>
-                <span style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 700;" id="daysLogged">0/7</span>
-              </div>
-              <div style="padding: 12px; background: var(--bg-elevated); border-radius: 8px; text-align: center;">
-                <span style="font-size: 0.6rem; color: var(--text-muted); display: block; margin-bottom: 4px;">Total Points</span>
-                <span style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;" id="totalWeekPts">0.0</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- League Page -->
-  <div id="league" class="page">
-    <div class="container">
-      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px; flex-wrap: wrap; gap: 20px;">
-        <div>
-          <h1 style="display: flex; align-items: center; gap: 16px; margin-bottom: 8px;">
-            <span style="filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));">🏆</span>
-            <span id="leagueName">Fantasy Life League</span>
-          </h1>
-          <div style="display: flex; gap: 24px; color: var(--text-muted); font-size: 0.9rem;">
-            <span id="playerCount">👥 0/10 Players</span>
-            <span>📅 30 Week Season</span>
-          </div>
-        </div>
-        
-        <div style="display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap;">
-          <div>
-            <span style="font-family: var(--font-display); font-size: 0.6rem; color: var(--text-muted); letter-spacing: 0.15em; display: block; margin-bottom: 4px;">INVITE CODE</span>
-            <div style="display: flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--bg-card); border: 1px solid rgba(0, 255, 240, 0.2); border-radius: 8px;">
-              <span style="font-family: var(--font-mono); font-size: 1rem; font-weight: 700; letter-spacing: 0.15em; color: var(--neon-cyan);" id="inviteCode">--------</span>
-              <button onclick="copyCode()" style="background: transparent; border: 1px solid rgba(0, 255, 240, 0.3); border-radius: 4px; color: var(--neon-cyan); padding: 4px 8px; cursor: pointer;">📋</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section">
-        <h2 style="margin-bottom: 20px;">League Standings</h2>
-        <div class="league-table">
-          <table>
-            <thead>
-              <tr>
-                <th>Rank</th>
-                <th>Player</th>
-                <th>W</th>
-                <th>L</th>
-                <th>Points</th>
-                <th>This Week</th>
-              </tr>
-            </thead>
-            <tbody id="standingsBody">
-              <!-- Populated by JS -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Matchup Page -->
-  <div id="matchup" class="page">
-    <div class="container">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; flex-wrap: wrap; gap: 16px;">
-        <h1 style="display: flex; align-items: center; gap: 16px;">
-          <span style="color: var(--electric-purple); filter: drop-shadow(0 0 10px var(--electric-purple));">⚔️</span>
-          Weekly Matchup
-        </h1>
-        <div style="display: flex; align-items: center; gap: 8px; padding: 8px 20px; background: var(--bg-card); border: 1px solid rgba(0, 255, 240, 0.2); border-radius: 8px; color: var(--neon-cyan);">
-          <span>📅</span>
-          <span style="font-family: var(--font-display); font-size: 0.8rem; font-weight: 600;" id="matchupWeekDisplay">Week 48</span>
-        </div>
-      </div>
-
-      <div style="display: grid; grid-template-columns: 1fr 320px; gap: 32px;">
-        <div class="match-card" id="fullMatchCard">
-          <!-- Same as dashboard matchup card, populated by JS -->
-        </div>
-
-        <div style="display: flex; flex-direction: column; gap: 20px;">
-          <div class="sidebar-card">
-            <div class="card-header">
-              <span style="color: var(--neon-cyan);">🏆</span>
-              <h3>Match History</h3>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 8px;" id="matchHistory">
-              <!-- Populated by JS -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Insights Page -->
-  <div id="insights" class="page">
-    <div class="container">
-      <div style="margin-bottom: 32px;">
-        <h1 style="display: flex; align-items: center; gap: 16px; margin-bottom: 8px;">
-          <span style="color: var(--neon-cyan); filter: drop-shadow(0 0 10px var(--neon-cyan));">📊</span>
-          Your Insights
-        </h1>
-        <p style="font-size: 1.1rem; color: var(--text-secondary);">Track your progress and discover patterns</p>
-      </div>
-
-      <div class="insights-grid">
-        <div class="insight-card">
-          <div class="insight-icon" style="background: rgba(255, 102, 0, 0.1);">🔥</div>
-          <div>
-            <span class="insight-value" style="color: var(--neon-orange);" id="insightStreak">0</span>
-            <span class="insight-label">Day Streak</span>
-          </div>
-        </div>
-        <div class="insight-card">
-          <div class="insight-icon" style="background: rgba(0, 255, 102, 0.1);">🎯</div>
-          <div>
-            <span class="insight-value" style="color: var(--neon-green);" id="insightDays">0</span>
-            <span class="insight-label">Days Logged (30d)</span>
-          </div>
-        </div>
-        <div class="insight-card">
-          <div class="insight-icon" style="background: rgba(0, 255, 102, 0.1);">🏆</div>
-          <div>
-            <span class="insight-value" style="color: var(--neon-green);" id="bestHabit">-</span>
-            <span class="insight-label">Best Habit</span>
-          </div>
-        </div>
-        <div class="insight-card">
-          <div class="insight-icon" style="background: rgba(255, 0, 170, 0.1);">⚠️</div>
-          <div>
-            <span class="insight-value" style="color: var(--neon-pink);" id="worstHabit">-</span>
-            <span class="insight-label">Needs Work</span>
-          </div>
-        </div>
-      </div>
-
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
-        <div class="section">
-          <h2 style="margin-bottom: 20px;">30-Day Averages</h2>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;" id="averagesGrid">
-            <!-- Populated by JS -->
-          </div>
-        </div>
-
-        <div class="section">
-          <h2 style="margin-bottom: 20px;">Recommendations</h2>
-          <div style="display: flex; flex-direction: column; gap: 12px;" id="recommendations">
-            <!-- Populated by JS -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Rules Page -->
-  <div id="rules" class="page">
-    <div class="container">
-      <div class="rules-header">
-        <h1>
-          <span style="color: var(--neon-cyan);">📖</span>
-          Rules & Scoring
-        </h1>
-        <p>Everything you need to know to dominate your league</p>
-      </div>
-
-      <section class="rules-section">
-        <h2>⚡ How It Works</h2>
-        <div class="how-it-works-grid">
-          <div class="step-card">
-            <div class="step-number">1</div>
-            <div class="step-content">
-              <h3>Join or Create a League</h3>
-              <p>Create a new league and share the invite code with friends, or join an existing league. Each league has up to 10 players.</p>
-            </div>
-          </div>
-          <div class="step-card">
-            <div class="step-number">2</div>
-            <div class="step-content">
-              <h3>Log Your Daily Habits</h3>
-              <p>Every day, log your sleep, study time, exercise, hydration, and more. Consistency is key!</p>
-            </div>
-          </div>
-          <div class="step-card">
-            <div class="step-number">3</div>
-            <div class="step-content">
-              <h3>Compete in Weekly Matchups</h3>
-              <p>Each week, you face another player. Your total habit points determine the winner.</p>
-            </div>
-          </div>
-          <div class="step-card">
-            <div class="step-number">4</div>
-            <div class="step-content">
-              <h3>Climb the Standings</h3>
-              <p>Win matchups to improve your record. Best record after 30 weeks wins the season!</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="rules-section">
-        <h2>🎯 Scoring System</h2>
-        <div class="scoring-grid">
-          <div class="scoring-card" style="--accent-color: #bf00ff;">
-            <div class="scoring-header">
-              <span style="font-size: 1.5rem;">🌙</span>
-              <h3>Sleep</h3>
-            </div>
-            <ul class="scoring-rules">
-              <li>Full points for 7-9 hours</li>
-              <li>Less than 7 hours: 80% of hours</li>
-              <li>Over 9 hours: slight penalty</li>
-              <li style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">Example: 8 hrs = 8 pts</li>
-            </ul>
-          </div>
-          <div class="scoring-card" style="--accent-color: #00fff0;">
-            <div class="scoring-header">
-              <span style="font-size: 1.5rem;">📚</span>
-              <h3>Study</h3>
-            </div>
-            <ul class="scoring-rules">
-              <li>1 point per hour</li>
-              <li>Capped at 1.5x daily goal</li>
-              <li>Focused time only</li>
-              <li style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">Example: 3 hrs = 3 pts</li>
-            </ul>
-          </div>
-          <div class="scoring-card" style="--accent-color: #00ff66;">
-            <div class="scoring-header">
-              <span style="font-size: 1.5rem;">🏋️</span>
-              <h3>Exercise</h3>
-            </div>
-            <ul class="scoring-rules">
-              <li>2 points per hour (2x!)</li>
-              <li>Any physical activity counts</li>
-              <li>Walking, gym, sports, etc.</li>
-              <li style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">Example: 1 hr = 2 pts</li>
-            </ul>
-          </div>
-          <div class="scoring-card" style="--accent-color: #00b8ff;">
-            <div class="scoring-header">
-              <span style="font-size: 1.5rem;">💧</span>
-              <h3>Hydration</h3>
-            </div>
-            <ul class="scoring-rules">
-              <li>0.5 points per cup</li>
-              <li>+2 bonus for hitting goal</li>
-              <li>Goal: 8 cups per day</li>
-              <li style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">Example: 8 cups = 6 pts</li>
-            </ul>
-          </div>
-          <div class="scoring-card" style="--accent-color: #ff6600;">
-            <div class="scoring-header">
-              <span style="font-size: 1.5rem;">🍎</span>
-              <h3>Nutrition</h3>
-            </div>
-            <ul class="scoring-rules">
-              <li>Rate 0-1 (poor to excellent)</li>
-              <li>Score × 5 = points</li>
-              <li>Be honest with yourself!</li>
-              <li style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">Example: 0.8 = 4 pts</li>
-            </ul>
-          </div>
-          <div class="scoring-card" style="--accent-color: #ffff00;">
-            <div class="scoring-header">
-              <span style="font-size: 1.5rem;">🧠</span>
-              <h3>Mindfulness</h3>
-            </div>
-            <ul class="scoring-rules">
-              <li>0.1 points per minute</li>
-              <li>Capped at 3 pts (30 min)</li>
-              <li>Meditation, journaling, etc.</li>
-              <li style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">Example: 15 min = 1.5 pts</li>
-            </ul>
-          </div>
-          <div class="scoring-card" style="--accent-color: #ff00aa;">
-            <div class="scoring-header">
-              <span style="font-size: 1.5rem;">📱</span>
-              <h3>Screen Time</h3>
-            </div>
-            <ul class="scoring-rules">
-              <li>No penalty ≤ 4 hours</li>
-              <li>-0.5 pts per hour over 4</li>
-              <li>Recreational use only</li>
-              <li style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">Example: 6 hrs = -1 pt</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section class="rules-section">
-        <h2>📈 Tips for Success</h2>
-        <div class="tips-grid">
-          <div class="tip-card">
-            <span class="tip-emoji">🎯</span>
-            <h3>Be Consistent</h3>
-            <p>Log habits daily. Small entries add up!</p>
-          </div>
-          <div class="tip-card">
-            <span class="tip-emoji">😴</span>
-            <h3>Prioritize Sleep</h3>
-            <p>7-9 hours = maximum points</p>
-          </div>
-          <div class="tip-card">
-            <span class="tip-emoji">🏃</span>
-            <h3>Exercise Pays</h3>
-            <p>2x points make it worthwhile!</p>
-          </div>
-          <div class="tip-card">
-            <span class="tip-emoji">💧</span>
-            <h3>Hit Goals</h3>
-            <p>Bonus points for meeting targets</p>
-          </div>
-          <div class="tip-card">
-            <span class="tip-emoji">📱</span>
-            <h3>Limit Screens</h3>
-            <p>Under 4 hrs avoids penalties</p>
-          </div>
-          <div class="tip-card">
-            <span class="tip-emoji">📊</span>
-            <h3>Check Insights</h3>
-            <p>Identify weak spots to improve</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="rules-section">
-        <h2>📝 Example Day</h2>
-        <div class="example-card">
-          <h3>Sample Day Calculation</h3>
-          <div class="example-table">
-            <div class="example-row header">
-              <span>Category</span>
-              <span>Logged</span>
-              <span>Points</span>
-            </div>
-            <div class="example-row">
-              <span>🌙 Sleep</span>
-              <span>7.5 hours</span>
-              <span class="points">+7.5</span>
-            </div>
-            <div class="example-row">
-              <span>📚 Study</span>
-              <span>3 hours</span>
-              <span class="points">+3.0</span>
-            </div>
-            <div class="example-row">
-              <span>🏋️ Exercise</span>
-              <span>1 hour</span>
-              <span class="points">+2.0</span>
-            </div>
-            <div class="example-row">
-              <span>💧 Hydration</span>
-              <span>8 cups ✓</span>
-              <span class="points">+6.0</span>
-            </div>
-            <div class="example-row">
-              <span>🍎 Nutrition</span>
-              <span>0.8</span>
-              <span class="points">+4.0</span>
-            </div>
-            <div class="example-row">
-              <span>🧠 Mindfulness</span>
-              <span>15 mins</span>
-              <span class="points">+1.5</span>
-            </div>
-            <div class="example-row">
-              <span>📱 Screen</span>
-              <span>3 hours</span>
-              <span class="points">+0.0</span>
-            </div>
-            <div class="example-row total">
-              <span>TOTAL</span>
-              <span></span>
-              <span class="points">24.0 pts</span>
-            </div>
-          </div>
-          <p class="example-note">Great day! ~168 points/week at this pace. 🔥</p>
-        </div>
-      </section>
-    </div>
-  </div>
+  <div id="toast" class="toast"></div>
 
   <script>
-    // ===== HEALTH INTEGRATION CODE =====
-    const HEALTH_API_URL = 'http://localhost:8000/api/health'; // Change to your backend URL
-    const USER_ID = 'user-' + Date.now(); // Replace with actual user ID from auth
+    // ============ CONFIG ============
+    const API_URL = 'http://localhost:8000';
+    let authToken = localStorage.getItem('authToken');
+    let currentUser = null;
 
+    // ============ GLOBAL STATE ============
+    let state = {
+      user: { name: 'Player', wins: 0, losses: 0 },
+      habits: {},
+      weekPoints: 0,
+      daysLogged: 0,
+      streak: 0,
+      lastLogDate: null,
+      todayPoints: 0,
+      league: {
+        name: 'Demo League',
+        code: 'DEMO01',
+        players: [
+          {
+            player_id: 'demo1',
+            name: 'Sarah Chen',
+            wins: 4,
+            losses: 1,
+            total_points: 487.5,
+            rank: 1,
+            current_week_score: { total: 52.3 }
+          },
+          {
+            player_id: 'demo2',
+            name: 'Mike Rodriguez',
+            wins: 3,
+            losses: 2,
+            total_points: 421.8,
+            rank: 2,
+            current_week_score: { total: 45.7 }
+          },
+          {
+            player_id: 'current_user',
+            name: 'Player',
+            wins: 0,
+            losses: 0,
+            total_points: 0,
+            rank: 3,
+            current_week_score: { total: 0 }
+          }
+        ]
+      },
+      matchup: {
+        week: 1,
+        opponent: 'Opponent',
+        userScore: 0,
+        oppScore: 0,
+        categories: {
+          sleep: { user: 0, opp: 0 },
+          study: { user: 0, opp: 0 },
+          exercise: { user: 0, opp: 0 },
+          hydration: { user: 0, opp: 0 },
+          nutrition: { user: 0, opp: 0 }
+        }
+      }
+    };
+
+    // Helper to get week number
+    if (!Date.prototype.getWeekNumber) {
+      Date.prototype.getWeekNumber = function () {
+        const date = new Date(this.getTime());
+        date.setHours(0, 0, 0, 0);
+        date.setDate(date.getDate() + 4 - (date.getDay() || 7));
+        const yearStart = new Date(date.getFullYear(), 0, 1);
+        const weekNo = Math.ceil((((date - yearStart) / 86400000) + 1) / 7);
+        return weekNo;
+      };
+    }
+
+    // ============ INITIAL LOAD ============
+    document.addEventListener('DOMContentLoaded', () => {
+      if (authToken) {
+        verifyAndLoadUser();
+      } else {
+        showAuthScreen();
+      }
+    });
+
+    // ============ AUTH UI HELPERS ============
+    function showAuthScreen() {
+      document.getElementById('authScreen').style.display = 'flex';
+      document.getElementById('mainApp').style.display = 'none';
+    }
+
+    function showMainApp() {
+      document.getElementById('authScreen').style.display = 'none';
+      document.getElementById('mainApp').style.display = 'block';
+      fetchHealthStatus();
+    }
+
+    function showAuthError(message) {
+      const errorEl = document.getElementById('authError');
+      errorEl.textContent = message;
+      errorEl.style.display = 'block';
+      setTimeout(() => errorEl.style.display = 'none', 5000);
+    }
+
+    // Toggle login/signup
+    document.getElementById('authToggle').addEventListener('click', () => {
+      const loginForm = document.getElementById('loginForm');
+      const signupForm = document.getElementById('signupForm');
+      const toggleText = document.getElementById('authToggleText');
+      const toggleBtn = document.getElementById('authToggle');
+
+      if (loginForm.style.display === 'none') {
+        loginForm.style.display = 'flex';
+        signupForm.style.display = 'none';
+        toggleText.textContent = "Don't have an account?";
+        toggleBtn.textContent = "Sign Up";
+      } else {
+        loginForm.style.display = 'none';
+        signupForm.style.display = 'flex';
+        toggleText.textContent = "Already have an account?";
+        toggleBtn.textContent = "Sign In";
+      }
+    });
+
+    // ============ AUTH: LOGIN ============
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      try {
+        const response = await fetch(`${API_URL}/auth/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: document.getElementById('loginEmail').value,
+            password: document.getElementById('loginPassword').value
+          })
+        });
+
+        if (!response.ok) {
+          const error = await response.json();
+          throw new Error(error.detail || 'Login failed');
+        }
+
+        const data = await response.json();
+        authToken = data.access_token;
+        localStorage.setItem('authToken', authToken);
+        await verifyAndLoadUser();
+        showToast('Welcome back!', false);
+      } catch (error) {
+        showAuthError(error.message);
+      }
+    });
+
+    // ============ AUTH: SIGNUP ============
+    document.getElementById('signupForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      try {
+        const response = await fetch(`${API_URL}/auth/signup`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: document.getElementById('signupName').value,
+            email: document.getElementById('signupEmail').value,
+            password: document.getElementById('signupPassword').value
+          })
+        });
+
+        if (!response.ok) {
+          const error = await response.json();
+          throw new Error(error.detail || 'Signup failed');
+        }
+
+        const data = await response.json();
+        authToken = data.access_token;
+        localStorage.setItem('authToken', authToken);
+        await verifyAndLoadUser();
+        showToast('Account created!', false);
+      } catch (error) {
+        showAuthError(error.message);
+      }
+    });
+
+    async function verifyAndLoadUser() {
+      try {
+        await loadUserData();
+        showMainApp();
+      } catch (error) {
+        console.error("Auth failed:", error);
+        localStorage.removeItem('authToken');
+        authToken = null;
+        showAuthScreen();
+      }
+    }
+
+    async function loadUserData() {
+      const response = await fetch(`${API_URL}/auth/me`, {
+        headers: { 'Authorization': `Bearer ${authToken}` }
+      });
+
+      if (!response.ok) throw new Error('Failed to load user');
+
+      currentUser = await response.json();
+      state.user.name = currentUser.name;
+
+      // Update demo league player with actual user info
+      const demoUser = state.league.players.find(p => p.player_id === 'current_user');
+      if (demoUser) {
+        demoUser.name = currentUser.name;
+        demoUser.player_id = currentUser._id;
+      }
+
+      await loadWeekData();
+      await loadLeaguePlayers();
+      updateUI();
+    }
+
+    // ============ HABITS LOAD ============
+    async function loadWeekData() {
+      try {
+        const response = await fetch(`${API_URL}/habits/week`, {
+          headers: { 'Authorization': `Bearer ${authToken}` }
+        });
+
+        if (!response.ok) return;
+
+        const data = await response.json();
+        state.weekPoints = data.score.total;
+        state.daysLogged = data.score.days_logged;
+        state.matchup.userScore = data.score.total;
+        state.matchup.week = data.week;
+
+        // Update demo league player with actual scores
+        const demoUser = state.league.players.find(p => p.player_id === currentUser._id);
+        if (demoUser) {
+          demoUser.current_week_score = { total: data.score.total };
+          demoUser.total_points += data.score.total;
+        }
+
+        // load today's entry if exists
+        const todayRes = await fetch(`${API_URL}/habits/today`, {
+          headers: { 'Authorization': `Bearer ${authToken}` }
+        });
+        if (todayRes.ok) {
+          const todayData = await todayRes.json();
+          state.habits = todayData;
+          state.todayPoints = todayData.total_points;
+          state.lastLogDate = new Date().toISOString().split('T')[0];
+
+          if (todayData.sleep) document.getElementById('sleep').value = todayData.sleep;
+          if (todayData.study) document.getElementById('study').value = todayData.study;
+          if (todayData.exercise) document.getElementById('exercise').value = todayData.exercise;
+          if (todayData.hydration) document.getElementById('hydration').value = todayData.hydration;
+          if (todayData.nutrition) document.getElementById('nutrition').value = todayData.nutrition;
+          if (todayData.mindfulness) document.getElementById('mindfulness').value = todayData.mindfulness;
+        }
+      } catch (error) {
+        console.error('Error loading week data:', error);
+      }
+    }
+
+    // ============ LOGOUT ============
+    function logout() {
+      if (confirm('Are you sure you want to logout?')) {
+        localStorage.removeItem('authToken');
+        location.reload();
+      }
+    }
+
+    // ============ HABIT LOGGING (FIXED!) ============
+    async function logHabits() {
+      const today = new Date().toISOString().split('T')[0];
+      const alreadyLoggedToday = state.lastLogDate === today;
+
+      const habits = {
+        sleep: parseFloat(document.getElementById('sleep').value) || null,
+        study: parseFloat(document.getElementById('study').value) || null,
+        exercise: parseFloat(document.getElementById('exercise').value) || null,
+        hydration: parseInt(document.getElementById('hydration').value) || null,
+        nutrition: parseInt(document.getElementById('nutrition').value) || null,
+        mindfulness: parseInt(document.getElementById('mindfulness').value) || null
+      };
+
+      Object.keys(habits).forEach(key => habits[key] === null && delete habits[key]);
+
+      if (Object.keys(habits).length === 0) {
+        showToast('Please enter at least one habit!', true);
+        return;
+      }
+
+      try {
+        const response = await fetch(`${API_URL}/habits/log`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+          },
+          body: JSON.stringify(habits)
+        });
+
+        if (!response.ok) throw new Error('Failed to log habits');
+
+        const data = await response.json();
+        const newPoints = data.total_points;
+
+        if (alreadyLoggedToday) {
+          // UPDATE: Calculate difference
+          const oldPoints = state.todayPoints || 0;
+          const pointsDiff = newPoints - oldPoints;
+
+          state.habits = { ...state.habits, ...habits };
+          state.todayPoints = newPoints;
+          state.weekPoints += pointsDiff;
+
+          // Update demo league player score
+          const demoUser = state.league.players.find(p => p.player_id === currentUser._id);
+          if (demoUser) {
+            demoUser.total_points += pointsDiff;
+            demoUser.current_week_score.total += pointsDiff;
+          }
+
+          // Update matchup categories
+          updateMatchupCategories(habits);
+
+          await loadWeekData();
+          showCoachTip(habits);
+          updateUI();
+
+          // FIX APPLIED HERE!
+          showToast(`Habits updated! ${pointsDiff >= 0 ? '+' : ''}${pointsDiff.toFixed(1)} points`, false, Math.abs(pointsDiff));
+        } else {
+          // NEW LOG: Add full points
+          state.habits = { ...state.habits, ...habits };
+          state.todayPoints = newPoints;
+          state.weekPoints += newPoints;
+          state.daysLogged = Math.min(7, state.daysLogged + 1);
+          state.lastLogDate = today;
+
+          // Update demo league player score
+          const demoUser = state.league.players.find(p => p.player_id === currentUser._id);
+          if (demoUser) {
+            demoUser.total_points += newPoints;
+            demoUser.current_week_score.total += newPoints;
+          }
+
+          // Update matchup categories
+          updateMatchupCategories(habits);
+
+          await loadWeekData();
+          showCoachTip(habits);
+          updateUI();
+
+          showToast(`Habits logged! +${newPoints.toFixed(1)} points`, false, newPoints);
+        }
+      } catch (error) {
+        showToast('Error logging habits', true);
+        console.error(error);
+      }
+    }
+
+    function updateMatchupCategories(habits) {
+      // Simple demo update for matchup categories
+      if (habits.sleep) state.matchup.categories.sleep.user = parseFloat(habits.sleep);
+      if (habits.study) state.matchup.categories.study.user = parseFloat(habits.study);
+      if (habits.exercise) state.matchup.categories.exercise.user = parseFloat(habits.exercise);
+      if (habits.hydration) state.matchup.categories.hydration.user = parseFloat(habits.hydration);
+      if (habits.nutrition) state.matchup.categories.nutrition.user = parseFloat(habits.nutrition);
+
+      // Generate random opponent scores for demo
+      state.matchup.categories.sleep.opp = Math.random() * 8 + 4;
+      state.matchup.categories.study.opp = Math.random() * 3 + 1;
+      state.matchup.categories.exercise.opp = Math.random() * 1.5 + 0.5;
+      state.matchup.categories.hydration.opp = Math.random() * 6 + 4;
+      state.matchup.categories.nutrition.opp = Math.random() * 8 + 2;
+
+      // Update opponent score
+      state.matchup.oppScore = (Math.random() * 30 + 20).toFixed(1);
+    }
+
+    // ============ LEAGUE MANAGEMENT ============
+    async function createLeague() {
+      const name = prompt("Enter league name:");
+      if (!name) return;
+
+      try {
+        const response = await fetch(`${API_URL}/league/create`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+          },
+          body: JSON.stringify({ name })
+        });
+
+        if (!response.ok) throw new Error('Failed to create league');
+
+        const data = await response.json();
+        showToast(`League created! Code: ${data.code}`, false);
+        await loadLeaguePlayers();
+      } catch (error) {
+        showToast('Error creating league: ' + error.message, true);
+      }
+    }
+
+    async function joinLeague() {
+      const code = prompt("Enter invite code:");
+      if (!code) return;
+
+      try {
+        const response = await fetch(`${API_URL}/league/join`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+          },
+          body: JSON.stringify({ code: code.toUpperCase() })
+        });
+
+        if (!response.ok) throw new Error('Invalid code or already in league');
+
+        showToast('Joined league!', false);
+        await loadLeaguePlayers();
+      } catch (error) {
+        showToast(error.message, true);
+      }
+    }
+
+    async function loadLeaguePlayers() {
+      try {
+        const response = await fetch(`${API_URL}/league/standings`, {
+          headers: { 'Authorization': `Bearer ${authToken}` }
+        });
+
+        if (!response.ok) {
+          state.league.players = [];
+          state.league.name = "No League";
+          state.league.code = "---";
+          updateLeague();
+          return;
+        }
+
+        const data = await response.json();
+        state.league.name = data.league.name;
+        state.league.code = data.league.code;
+        state.league.players = data.standings || [];
+        updateLeague();
+      } catch (error) {
+        console.error('Error loading league:', error);
+      }
+    }
+
+    // ============ HEALTH (VISUAL ONLY) ============
     let healthState = {
       lastSync: null,
       isSyncing: false,
@@ -1938,180 +2071,125 @@
         steps: 0,
         calories: 0,
         distance: 0,
-        workouts: 0,
-        heartRate: 0
+        workouts: 0
       },
-      points: 0,
       status: 'not-synced'
     };
 
     async function fetchHealthStatus() {
-      try {
-        const response = await fetch(`${HEALTH_API_URL}/status/${USER_ID}`);
-        const data = await response.json();
-        
-        if (data.hasData) {
-          healthState.data = {
-            steps: Math.round(data.statistics.averageSteps),
-            calories: Math.round(data.statistics.averageCalories),
-            distance: Math.round(data.statistics.averageDistance / 1000),
-            workouts: 0,
-            heartRate: 0
-          };
-          healthState.status = 'synced';
-          healthState.lastSync = new Date();
-        }
-        
-        updateHealthUI();
-      } catch (error) {
-        console.error('Failed to fetch health status:', error);
-        healthState.status = 'error';
-        updateHealthUI();
-      }
+      updateHealthUI();
     }
 
     async function syncHealthData() {
       if (healthState.isSyncing) return;
-      
+
+      // Prompt for Apple ID login
+      const appleId = prompt("Sign in to Apple Health:\n\nEnter your Apple ID:");
+      if (!appleId) {
+        showToast('Apple Health login cancelled', true);
+        return;
+      }
+
+      const password = prompt("Enter your Apple ID password:");
+      if (!password) {
+        showToast('Apple Health login cancelled', true);
+        return;
+      }
+
       healthState.isSyncing = true;
       updateHealthUI();
-      
+
       try {
-        // Demo mode - generates realistic data for testing
+        // Simulate authentication
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
         const mockData = {
           steps: Math.floor(Math.random() * 5000) + 7000,
           calories: Math.floor(Math.random() * 300) + 400,
           distance: Math.floor(Math.random() * 3) + 5,
           workouts: Math.floor(Math.random() * 2) + 1
         };
-        
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        
+
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
         healthState.data = mockData;
-        healthState.points = calculateHealthPoints(mockData);
         healthState.status = 'synced';
         healthState.lastSync = new Date();
-        
-        state.matchup.userScore += healthState.points;
-        state.weekPoints += healthState.points;
-        
-        saveState();
-        updateUI();
+
         updateHealthUI();
-        
-        showToast(`Health data synced! +${healthState.points} bonus points`, false, healthState.points);
+        showToast(`Signed in as ${appleId} - Health data synced!`, false);
       } catch (error) {
-        console.error('Sync failed:', error);
         healthState.status = 'error';
         updateHealthUI();
-        showToast('Health sync failed. Please try again.', true);
       } finally {
         healthState.isSyncing = false;
         updateHealthUI();
       }
     }
 
-    function calculateHealthPoints(data) {
-      let points = 0;
-      points += Math.floor(data.steps / 1000);
-      points += Math.floor(data.calories / 100);
-      points += (data.workouts || 0) * 5;
-      if (data.distance > 5) {
-        points += (data.distance - 5) * 2;
-      }
-      return Math.round(points * 10) / 10;
-    }
-
     function updateHealthUI() {
       const container = document.getElementById('healthSyncCard');
       if (!container) return;
-      
-      const statusBadge = healthState.isSyncing ? 
-        `<span class="sync-status"><span class="loading-spinner"></span> Syncing...</span>` :
-        healthState.status === 'synced' ? 
-        `<span class="sync-status synced">✓ Synced ${formatTimeAgo(healthState.lastSync)}</span>` :
-        healthState.status === 'error' ?
-        `<span class="sync-status error">✗ Sync Failed</span>` :
-        `<span class="sync-status">○ Not Synced</span>`;
-      
+
+      const statusBadge = healthState.isSyncing
+        ? `<span class="sync-status"><span class="loading-spinner"></span> Syncing...</span>`
+        : healthState.status === 'synced'
+          ? `<span class="sync-status synced">✓ Synced ${formatTimeAgo(healthState.lastSync)}</span>`
+          : healthState.status === 'error'
+            ? `<span class="sync-status error">✗ Sync Failed</span>`
+            : `<span class="sync-status">○ Not Synced</span>`;
+
       container.innerHTML = `
-        <div class="health-sync-header">
-          <div class="health-sync-title">
-            <span style="font-size: 1.5rem;">🏃</span>
-            <h3>Health Data</h3>
-            <span class="health-badge">📱 iOS App</span>
-          </div>
+        <div class="section-header">
+          <h2>🏃 Health Data</h2>
           ${statusBadge}
         </div>
-        
-        <div class="health-metrics">
-          <div class="health-metric" style="--accent-color: #00ff66;">
-            <div class="metric-header">
-              <span style="color: #00ff66;">👟</span>
-              <span class="metric-label">Steps</span>
+        <div class="health-metrics" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;">
+          <div class="health-metric">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
+              <span style="color:#00ff66;">👟</span>
+              <span style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;">Steps</span>
             </div>
-            <div class="metric-value" style="color: #00ff66;">
+            <div style="color:#00ff66;font-family:var(--font-display);font-size:1.4rem;font-weight:700;">
               ${healthState.data.steps.toLocaleString()}
-              <span class="metric-unit">steps</span>
+              <span style="font-size:0.7rem;color:var(--text-muted);font-weight:400;">steps</span>
             </div>
-            <div class="metric-points">+${Math.floor(healthState.data.steps / 1000)} pts</div>
           </div>
-          
-          <div class="health-metric" style="--accent-color: #ff6600;">
-            <div class="metric-header">
-              <span style="color: #ff6600;">🔥</span>
-              <span class="metric-label">Calories</span>
+          <div class="health-metric">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
+              <span style="color:#ff6600;">🔥</span>
+              <span style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;">Calories</span>
             </div>
-            <div class="metric-value" style="color: #ff6600;">
+            <div style="color:#ff6600;font-family:var(--font-display);font-size:1.4rem;font-weight:700;">
               ${healthState.data.calories}
-              <span class="metric-unit">kcal</span>
+              <span style="font-size:0.7rem;color:var(--text-muted);font-weight:400;">kcal</span>
             </div>
-            <div class="metric-points">+${Math.floor(healthState.data.calories / 100)} pts</div>
           </div>
-          
-          <div class="health-metric" style="--accent-color: #00b8ff;">
-            <div class="metric-header">
-              <span style="color: #00b8ff;">📏</span>
-              <span class="metric-label">Distance</span>
+          <div class="health-metric">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
+              <span style="color:#00b8ff;">📏</span>
+              <span style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;">Distance</span>
             </div>
-            <div class="metric-value" style="color: #00b8ff;">
+            <div style="color:#00b8ff;font-family:var(--font-display);font-size:1.4rem;font-weight:700;">
               ${healthState.data.distance.toFixed(1)}
-              <span class="metric-unit">km</span>
+              <span style="font-size:0.7rem;color:var(--text-muted);font-weight:400;">km</span>
             </div>
-            <div class="metric-points">+${healthState.data.distance > 5 ? (healthState.data.distance - 5) * 2 : 0} pts</div>
           </div>
-          
-          <div class="health-metric" style="--accent-color: #bf00ff;">
-            <div class="metric-header">
-              <span style="color: #bf00ff;">💪</span>
-              <span class="metric-label">Workouts</span>
+          <div class="health-metric">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;">
+              <span style="color:#bf00ff;">💪</span>
+              <span style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;">Workouts</span>
             </div>
-            <div class="metric-value" style="color: #bf00ff;">
-              ${healthState.data.workouts || 0}
-              <span class="metric-unit">today</span>
+            <div style="color:#bf00ff;font-family:var(--font-display);font-size:1.4rem;font-weight:700;">
+              ${healthState.data.workouts}
+              <span style="font-size:0.7rem;color:var(--text-muted);font-weight:400;">today</span>
             </div>
-            <div class="metric-points">+${(healthState.data.workouts || 0) * 5} pts</div>
           </div>
         </div>
-        
-        <div class="sync-actions">
-          <button class="btn btn-sync" onclick="syncHealthData()" ${healthState.isSyncing ? 'disabled' : ''}>
+        <div style="display:flex;gap:12px;align-items:center;margin-top:12px;">
+          <button class="btn btn-primary" onclick="syncHealthData()" ${healthState.isSyncing ? 'disabled' : ''}>
             ${healthState.isSyncing ? '⏳ Syncing...' : '🔄 Sync Health Data'}
           </button>
-          ${healthState.points > 0 ? `
-            <div style="padding: 8px 16px; background: rgba(0, 255, 102, 0.1); border: 1px solid var(--neon-green); border-radius: 8px;">
-              <span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted);">Bonus:</span>
-              <span style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--neon-green); margin-left: 4px;">+${healthState.points}</span>
-            </div>
-          ` : ''}
-        </div>
-        
-        <div class="sync-info">
-          ${healthState.status === 'not-synced' ? 
-            '📱 Download our iOS app to sync your Apple Health data' :
-            healthState.status === 'synced' ?
-            '✓ Health data is automatically verified to prevent cheating' :
-            '⚠️ Connection failed. Please check your internet connection'}
         </div>
       `;
     }
@@ -2125,147 +2203,7 @@
       return `${Math.floor(seconds / 86400)}d ago`;
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      fetchHealthStatus();
-      setInterval(fetchHealthStatus, 5 * 60 * 1000);
-    });
-
-    // ===== EXISTING APP CODE =====
-    let state = {
-      user: { name: 'Player', wins: 0, losses: 0 },
-      habits: {},
-      weekPoints: 0,
-      daysLogged: 0,
-      streak: 0,
-      lastLogDate: null,
-      todayPoints: 0,
-      league: {
-        name: 'Fantasy Life League',
-        code: 'FLL2025',
-        players: []
-      },
-      matchup: {
-        week: 48,
-        opponent: 'Opponent',
-        userScore: 0,
-        oppScore: 0,
-        categories: {}
-      }
-    };
-
-    function loadState() {
-      const saved = localStorage.getItem('fllState');
-      if (saved) {
-        state = { ...state, ...JSON.parse(saved) };
-      }
-      //check if streak should be reset
-      if (state.lastLogDate) {
-        const lastLog = new Date(state.lastLogDate);
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        lastLog.setHours(0, 0, 0, 0);
-        const daysDiff = Math.floor((today - lastLog) / (1000 * 60 * 60 * 24));
-        if (daysDiff > 1) {
-          state.streak = 0;
-        }
-      }
-      if (state.league.players.length === 0) {
-        state.league.players = [
-          { name: state.user.name, wins: state.user.wins, losses: state.user.losses, points: state.weekPoints * 7, weekPts: state.weekPoints, isUser: true },
-        ];
-      }
-      updateUI();
-    }
-
-    function saveState() {
-      localStorage.setItem('fllState', JSON.stringify(state));
-    }
-
-    function calculatePoints(habits) {
-      let points = 0;
-      
-      const sleep = parseFloat(habits.sleep) || 0;
-      if (sleep >= 7 && sleep <= 9) points += sleep;
-      else if (sleep > 9) points += 9 - (sleep - 9) * 0.5;
-      else points += sleep * 0.8;
-      
-      points += Math.min(parseFloat(habits.study) || 0, 4.5);
-      points += (parseFloat(habits.exercise) || 0) * 2;
-      
-      const hydration = parseFloat(habits.hydration) || 0;
-      points += hydration * 0.5;
-      if (hydration >= 8) points += 2;
-      
-      points += (parseFloat(habits.nutrition) || 0) * 5;
-      points += Math.min((parseFloat(habits.mindfulness) || 0) * 0.1, 3);
-      
-      const screen = parseFloat(habits.screentime) || 0;
-      if (screen > 4) points -= (screen - 4) * 0.5;
-      
-      return Math.max(0, Math.round(points * 10) / 10);
-    }
-
-    function logHabits() {
-      const today = new Date().toISOString().split('T')[0];
-      const alreadyLoggedToday = state.lastLogDate === today;
-      const habits = {
-        sleep: document.getElementById('sleep').value,
-        study: document.getElementById('study').value,
-        exercise: document.getElementById('exercise').value,
-        hydration: document.getElementById('hydration').value,
-        nutrition: document.getElementById('nutrition').value,
-        mindfulness: document.getElementById('mindfulness').value,
-        screentime: document.getElementById('screentime').value
-      };
-      
-      if (!Object.values(habits).some(v => v)) {
-        showToast('Please enter at least one habit!', true);
-        return;
-      }
-      
-      const newPoints = calculatePoints(habits);
-
-      if(alreadyLoggedToday){
-        // Updste existing entry
-        const oldPoints = state.todayPoints || 0;
-        const pointsDiff = newPoints - oldPoints;
-        state.habits = habits;
-        state.todayPoints= newPoints;
-        state.weekPoints += pointsDiff;
-        state.matchup.userScore += pointsDiff;
-      
-        const userPlayer = state.league.players.find(p => p.isUser);
-        if (userPlayer) {
-          userPlayer.weekPts = state.matchup.userScore;
-          userPlayer.points += pointsDiff;
-        }
-      
-        showCoachTip(habits);
-      
-        saveState();
-        updateUI();
-        showToast(`Habits updated! ${pointsDiff >= 0 ? '+' : ''}${pointsDiff.toFixed(1)} points`, false, newPoints);
-      } else {
-        // New entry for today
-        state.habits = habits;
-        state.todayPoints = newPoints;
-        state.weekPoints += newPoints;
-        state.daysLogged = Math.min(7, state.daysLogged + 1);
-        state.streak++;
-        state.matchup.userScore += newPoints;
-        state.lastLogDate = today;
-        const userPlayer = state.league.players.find(p => p.isUser);
-        if (userPlayer) {
-          userPlayer.weekPts = state.matchup.userScore;
-          userPlayer.points += newPoints;
-        }
-        showCoachTip(habits);
-        saveState();
-        updateUI();
-        showToast(`Habits logged! +${newPoints.toFixed(1)} points`, false, newPoints);
-      }
-    }
-
+    // ============ UI HELPERS ============
     function showCoachTip(habits) {
       const tips = {
         sleep: {
@@ -2281,16 +2219,16 @@
           good: "Well hydrated! Water keeps your brain functioning optimally."
         }
       };
-      
+
       let category, message;
       const sleep = parseFloat(habits.sleep) || 0;
       const exercise = parseFloat(habits.exercise) || 0;
       const hydration = parseFloat(habits.hydration) || 0;
-      
+
       if (sleep < 7 && sleep > 0) {
         category = 'Sleep';
         message = tips.sleep.low;
-      } else if (exercise < 0.5) {
+      } else if (exercise < 0.5 && exercise > 0) {
         category = 'Exercise';
         message = tips.exercise.low;
       } else if (hydration < 6 && hydration > 0) {
@@ -2302,11 +2240,14 @@
       } else if (exercise >= 0.5) {
         category = 'Exercise';
         message = tips.exercise.good;
+      } else if (hydration >= 6) {
+        category = 'Hydration';
+        message = tips.hydration.good;
       } else {
         category = 'General';
-        message = 'Consistency beats intensity - small daily habits compound into big results!';
+        message = 'Consistency beats intensity – small daily habits compound into big results!';
       }
-      
+
       document.getElementById('tipCategory').textContent = category;
       document.getElementById('tipMessage').textContent = message;
       document.getElementById('coachTip').style.display = 'flex';
@@ -2314,27 +2255,72 @@
 
     function showToast(message, isError = false, points = null) {
       const toast = document.getElementById('toast');
-      const toastMessage = document.getElementById('toastMessage');
-      const toastPoints = document.getElementById('toastPoints');
-      const toastIcon = toast.querySelector('.toast-icon');
-      
-      toastMessage.textContent = message;
-      toastIcon.textContent = isError ? '❌' : '✅';
-      toastPoints.textContent = points ? `+${points} points earned!` : '';
+      toast.innerHTML = `
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span style="font-size:1.5rem;">${isError ? '❌' : '✅'}</span>
+          <div>
+            <div style="font-weight:700;">${message}</div>
+            ${points ? `<div style="font-size:0.8rem;opacity:0.8;">+${points.toFixed ? points.toFixed(1) : points} points earned!</div>` : ''}
+          </div>
+        </div>
+      `;
       toast.className = isError ? 'toast show error' : 'toast show';
-      
+
       setTimeout(() => {
         toast.classList.remove('show');
       }, 3000);
     }
 
     function copyCode() {
+      if (!state.league.code || state.league.code === '---') {
+        showToast('No league code yet – create or join a league first!', true);
+        return;
+      }
       navigator.clipboard.writeText(state.league.code);
       showToast('Invite code copied!');
     }
 
     function updateUI() {
-      //update button based on whether already logged in today
+      // Header / navbar
+      document.getElementById('userName').textContent = state.user.name;
+      document.getElementById('welcomeName').textContent = state.user.name.split(' ')[0] || 'Player';
+
+      document.getElementById('streakValue').textContent = state.streak;
+      document.getElementById('weekPoints').textContent = state.weekPoints.toFixed(1);
+      document.getElementById('record').textContent = `${state.user.wins}-${state.user.losses}`;
+      document.getElementById('weekNumber').textContent = state.matchup.week;
+
+      // Weekly sidebar
+      document.getElementById('todayPoints').textContent = `+${state.todayPoints.toFixed(1)} pts`;
+      document.getElementById('daysLogged').textContent = `${state.daysLogged}/7`;
+      document.getElementById('totalWeekPts').textContent = state.weekPoints.toFixed(1);
+
+      // Insights summary
+      document.getElementById('insightStreak').textContent = state.streak;
+      document.getElementById('insightDays').textContent = state.daysLogged;
+
+      // Best/worst habit
+      const h = state.habits || {};
+      let best = '-';
+      let worst = '-';
+
+      const scores = [];
+      if (h.sleep != null) scores.push({ name: 'Sleep', value: h.sleep });
+      if (h.study != null) scores.push({ name: 'Study', value: h.study });
+      if (h.exercise != null) scores.push({ name: 'Exercise', value: h.exercise });
+      if (h.hydration != null) scores.push({ name: 'Hydration', value: h.hydration });
+      if (h.nutrition != null) scores.push({ name: 'Nutrition', value: h.nutrition });
+
+      if (scores.length > 0) {
+        scores.sort((a, b) => b.value - a.value);
+        best = scores[0].name;
+        worst = scores[scores.length - 1].name;
+      }
+
+      document.getElementById('bestHabit').textContent = best;
+      document.getElementById('worstHabit').textContent = worst;
+
+      // Update button text (RESTORED!)
       const today = new Date().toISOString().split('T')[0];
       const logButton = document.querySelector('.submit-btn');
       if (state.lastLogDate === today) {
@@ -2342,251 +2328,219 @@
       } else {
         logButton.innerHTML = 'Log Habits';
       }
-      document.getElementById('userName').textContent = state.user.name;
-      document.getElementById('welcomeName').textContent = state.user.name.split(' ')[0];
-      
-      document.getElementById('streakValue').textContent = state.streak;
-      document.getElementById('weekPoints').textContent = state.matchup.userScore.toFixed(1);
-      document.getElementById('record').textContent = `${state.user.wins}-${state.user.losses}`;
-      
-      document.getElementById('todayPoints').textContent = `+${state.weekPoints.toFixed(1)} pts`;
-      
-      document.getElementById('daysLogged').textContent = `${state.daysLogged}/7`;
-      document.getElementById('totalWeekPts').textContent = state.matchup.userScore.toFixed(1);
-      
+
       updateMatchup();
+      updateMatchupPage();
       updateLeague();
       updateInsights();
     }
 
     function updateMatchup() {
-      const isWinning = state.matchup.userScore > state.matchup.oppScore;
-      
-      document.getElementById('matchWeek').textContent = `Week ${state.matchup.week}`;
-      document.getElementById('matchupWeekDisplay').textContent = `Week ${state.matchup.week}`;
-      document.getElementById('matchStatus').textContent = isWinning ? 'Winning' : 'Losing';
-      document.getElementById('matchStatus').className = `status-badge ${isWinning ? 'winning' : 'losing'}`;
-      
-      document.getElementById('userMatchName').textContent = state.user.name;
-      document.getElementById('userScore').textContent = state.matchup.userScore.toFixed(1);
-      document.getElementById('oppName').textContent = state.matchup.opponent;
-      document.getElementById('oppScore').textContent = state.matchup.oppScore.toFixed(1);
-      
+      const isWinning = state.matchup.userScore >= state.matchup.oppScore;
+      const fullCard = document.getElementById('fullMatchCard');
+      if (!fullCard) return;
+
+      fullCard.innerHTML = `
+        <div class="matchup-header">
+          <span class="week-badge">Week ${state.matchup.week}</span>
+          <span style="color: var(--electric-purple); font-size: 1.25rem;">⚔️</span>
+          <span class="status-badge ${isWinning ? 'winning' : 'losing'}">
+            ${isWinning ? 'Winning' : 'Losing'}
+          </span>
+        </div>
+        <div class="scoreboard">
+          <div class="player-score user ${isWinning ? 'leading' : ''}">
+            <span class="player-name">${state.user.name}</span>
+            <span class="score">${state.matchup.userScore.toFixed(1)}</span>
+            <span class="score-label">points</span>
+          </div>
+          <div class="vs-divider"><span>VS</span></div>
+          <div class="player-score opponent ${!isWinning ? 'leading' : ''}">
+            <span class="player-name">${state.matchup.opponent}</span>
+            <span class="score">${state.matchup.oppScore}</span>
+            <span class="score-label">points</span>
+          </div>
+        </div>
+      `;
+    }
+
+    function updateMatchupPage() {
+      // Update matchup page elements
+      document.getElementById('matchupWeek').textContent = state.matchup.week;
+      document.getElementById('matchupUserName').textContent = state.user.name;
+      document.getElementById('matchupOppName').textContent = state.matchup.opponent;
+      document.getElementById('matchupUserScore').textContent = state.matchup.userScore.toFixed(1);
+      document.getElementById('matchupOppScore').textContent = state.matchup.oppScore;
+
+      const isWinning = state.matchup.userScore >= parseFloat(state.matchup.oppScore);
+      const statusBadge = document.getElementById('matchupStatus');
+      statusBadge.className = `status-badge ${isWinning ? 'winning' : 'losing'}`;
+      statusBadge.textContent = isWinning ? 'Winning' : 'Losing';
+
+      // Update score cards
       const userCard = document.getElementById('userScoreCard');
       const oppCard = document.getElementById('oppScoreCard');
-      userCard.className = `player-score user ${isWinning ? 'leading' : ''}`;
-      oppCard.className = `player-score opponent ${!isWinning ? 'leading' : ''}`;
-      
+      if (isWinning) {
+        userCard.classList.add('leading');
+        oppCard.classList.remove('leading');
+      } else {
+        userCard.classList.remove('leading');
+        oppCard.classList.add('leading');
+      }
+
+      // Update category breakdown
       const categories = [
-        { name: 'Sleep', icon: '🌙', color: '#bf00ff', user: 14, opp: 11.5 },
-        { name: 'Study', icon: '📚', color: '#00fff0', user: 12, opp: 8 },
-        { name: 'Exercise', icon: '🏋️', color: '#00ff66', user: 6, opp: 9 },
-        { name: 'Hydration', icon: '💧', color: '#00b8ff', user: 8.5, opp: 7.5 },
-        { name: 'Nutrition', icon: '🍎', color: '#ff6600', user: 4, opp: 4.5 },
-        { name: 'Mind', icon: '🧠', color: '#ffff00', user: 3, opp: 1.5 }
+        { icon: '😴', name: 'Sleep', key: 'sleep' },
+        { icon: '📚', name: 'Study', key: 'study' },
+        { icon: '🏋️', name: 'Exercise', key: 'exercise' },
+        { icon: '💧', name: 'Hydration', key: 'hydration' },
+        { icon: '🍎', name: 'Nutrition', key: 'nutrition' }
       ];
-      
-      const breakdown = document.getElementById('categoryBreakdown');
-      breakdown.innerHTML = categories.map(cat => {
-        const total = cat.user + cat.opp || 1;
-        const userWidth = (cat.user / total) * 100;
-        const winning = cat.user > cat.opp;
+
+      const breakdownHTML = categories.map(cat => {
+        const userVal = state.matchup.categories[cat.key].user || 0;
+        const oppVal = state.matchup.categories[cat.key].opp || 0;
+        const total = userVal + oppVal;
+        const userPercent = total > 0 ? (userVal / total * 100) : 50;
+
         return `
-          <div class="category-row">
-            <div class="category-label">
-              <span style="color: ${cat.color}">${cat.icon}</span>
-              <span>${cat.name}</span>
+          <div class="category-item">
+            <div class="category-header">
+              <span class="category-name">${cat.icon} ${cat.name}</span>
             </div>
-            <div class="category-bar">
-              <div class="bar-fill" style="width: ${userWidth}%; background: ${winning ? cat.color : 'var(--text-muted)'};"></div>
-              <div class="bar-fill" style="width: ${100 - userWidth}%; background: ${!winning ? cat.color : 'var(--text-muted)'};"></div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: ${userPercent}%;"></div>
             </div>
             <div class="category-scores">
-              <span class="${winning ? 'highlight' : ''}">${cat.user.toFixed(1)}</span>
-              <span class="${!winning && cat.opp > cat.user ? 'highlight' : ''}">${cat.opp.toFixed(1)}</span>
+              <span class="you">You: ${userVal.toFixed(1)}</span>
+              <span class="them">Them: ${oppVal.toFixed(1)}</span>
             </div>
           </div>
         `;
       }).join('');
-      
-      const fullCard = document.getElementById('fullMatchCard');
-      if (fullCard) {
-        fullCard.innerHTML = `
-          <div class="matchup-header">
-            <span class="week-badge">Week ${state.matchup.week}</span>
-            <span style="color: var(--electric-purple); font-size: 1.25rem;">⚔️</span>
-            <span class="status-badge ${isWinning ? 'winning' : 'losing'}">${isWinning ? 'Winning' : 'Losing'}</span>
-          </div>
-          <div class="scoreboard">
-            <div class="player-score user ${isWinning ? 'leading' : ''}">
-              <span class="player-name">${state.user.name}</span>
-              <span class="score">${state.matchup.userScore.toFixed(1)}</span>
-              <span class="score-label">points</span>
-            </div>
-            <div class="vs-divider"><span>VS</span></div>
-            <div class="player-score opponent ${!isWinning ? 'leading' : ''}">
-              <span class="player-name">${state.matchup.opponent}</span>
-              <span class="score">${state.matchup.oppScore.toFixed(1)}</span>
-              <span class="score-label">points</span>
-            </div>
-          </div>
-          <div class="category-breakdown">
-            <h4>Category Breakdown</h4>
-            <div class="categories">${breakdown.innerHTML}</div>
-          </div>
-        `;
-      }
-      
-      const history = document.getElementById('matchHistory');
-      if (history) {
-        history.innerHTML = `
-          <div style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: var(--bg-elevated); border-radius: 8px; border-left: 3px solid var(--neon-green);">
-            <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted); min-width: 45px;">Wk 47</span>
-            <span style="color: var(--neon-green); font-weight: 700; font-size: 0.8rem;">✓ W</span>
-            <span style="flex: 1; font-size: 0.75rem; color: var(--text-secondary);">vs Sarah</span>
-            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">52-48</span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: var(--bg-elevated); border-radius: 8px; border-left: 3px solid var(--neon-pink);">
-            <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted); min-width: 45px;">Wk 46</span>
-            <span style="color: var(--neon-pink); font-weight: 700; font-size: 0.8rem;">✗ L</span>
-            <span style="flex: 1; font-size: 0.75rem; color: var(--text-secondary);">vs Mike</span>
-            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">41-45</span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: var(--bg-elevated); border-radius: 8px; border-left: 3px solid var(--neon-green);">
-            <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted); min-width: 45px;">Wk 45</span>
-            <span style="color: var(--neon-green); font-weight: 700; font-size: 0.8rem;">✓ W</span>
-            <span style="flex: 1; font-size: 0.75rem; color: var(--text-secondary);">vs Riley</span>
-            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">55-32</span>
-          </div>
-        `;
-      }
+
+      document.getElementById('categoryBreakdown').innerHTML = breakdownHTML;
     }
 
     function updateLeague() {
-      document.getElementById('leagueName').textContent = state.league.name;
-      document.getElementById('inviteCode').textContent = state.league.code;
-      document.getElementById('playerCount').textContent = `👥 ${state.league.players.length}/10 Players`;
-      
-      const demoPlayers = [
-        { name: 'Sarah', wins: 6, losses: 1, points: 342.5, weekPts: 52 },
-        { name: state.user.name, wins: state.user.wins, losses: state.user.losses, points: 318 + state.matchup.userScore, weekPts: state.matchup.userScore, isUser: true },
-        { name: 'Mike', wins: 5, losses: 2, points: 305, weekPts: 45 },
-        { name: state.matchup.opponent, wins: 4, losses: 3, points: 289.5, weekPts: state.matchup.oppScore },
-        { name: 'Jordan', wins: 4, losses: 3, points: 275, weekPts: 38.5 },
-        { name: 'Taylor', wins: 3, losses: 4, points: 260, weekPts: 35 },
-        { name: 'Casey', wins: 2, losses: 5, points: 245.5, weekPts: 32 },
-        { name: 'Riley', wins: 1, losses: 6, points: 220, weekPts: 28.5 }
-      ].sort((a, b) => b.wins - a.wins || b.points - a.points);
-      
+      const leagueNameEl = document.getElementById('leagueName');
+      const inviteCodeEl = document.getElementById('inviteCode');
+      const playerCountEl = document.getElementById('playerCount');
       const tbody = document.getElementById('standingsBody');
-      tbody.innerHTML = demoPlayers.map((p, i) => {
-        const rankIcon = i === 0 ? '<span class="gold">🏆</span>' : i === 1 ? '<span class="silver">🥈</span>' : i === 2 ? '<span class="bronze">🥉</span>' : `<span style="font-family: var(--font-mono); color: var(--text-muted);">${i + 1}</span>`;
+
+      if (!leagueNameEl || !inviteCodeEl || !playerCountEl || !tbody) return;
+
+      leagueNameEl.textContent = state.league.name;
+      inviteCodeEl.textContent = state.league.code;
+      playerCountEl.textContent = `👥 ${state.league.players.length} Players`;
+
+      if (!state.league.players.length) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" style="text-align:center; padding: 20px;">
+              No players yet. Create or join a league!
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      // Sort players by wins (desc), then total points (desc)
+      const sortedPlayers = [...state.league.players].sort((a, b) => {
+        if (b.wins !== a.wins) return b.wins - a.wins;
+        return b.total_points - a.total_points;
+      });
+
+      tbody.innerHTML = sortedPlayers.map((p, i) => {
+        const rankIcon =
+          i === 0 ? '<span class="gold">🏆</span>' :
+            i === 1 ? '<span class="silver">🥈</span>' :
+              i === 2 ? '<span class="bronze">🥉</span>' :
+                `<span style="font-family: var(--font-mono); color: var(--text-muted);">${i + 1}</span>`;
+
+        const isUser = currentUser && p.player_id === currentUser._id;
+
         return `
-          <tr class="${p.isUser ? 'current-user' : ''}">
+          <tr class="${isUser ? 'current-user' : ''}">
             <td class="rank-cell">${rankIcon}</td>
-            <td class="name-cell"><span>${p.name}</span>${p.isUser ? '<span class="you-badge">You</span>' : ''}</td>
+            <td class="name-cell">
+              <span>${p.name}</span>
+              ${isUser ? '<span class="you-badge">You</span>' : ''}
+            </td>
             <td class="stat-cell wins">${p.wins}</td>
             <td class="stat-cell losses">${p.losses}</td>
-            <td class="stat-cell points">${p.points.toFixed(1)}</td>
-            <td class="stat-cell">${p.weekPts.toFixed(1)}</td>
+            <td class="stat-cell points">${p.total_points.toFixed(1)}</td>
+            <td class="stat-cell">${p.current_week_score ? p.current_week_score.total.toFixed(1) : '0.0'}</td>
           </tr>
         `;
       }).join('');
     }
 
     function updateInsights() {
-      document.getElementById('insightStreak').textContent = state.streak;
-      document.getElementById('insightDays').textContent = state.daysLogged;
-      
-      const habits = state.habits;
-      let best = '-', worst = '-';
-      if (habits.sleep) {
-        const sleep = parseFloat(habits.sleep);
-        if (sleep >= 7) best = 'Sleep';
-        else worst = 'Sleep';
-      }
-      if (habits.exercise && parseFloat(habits.exercise) < 0.5) worst = 'Exercise';
-      else if (habits.exercise) best = 'Exercise';
-      
-      document.getElementById('bestHabit').textContent = best;
-      document.getElementById('worstHabit').textContent = worst || 'Exercise';
-      
       const avgGrid = document.getElementById('averagesGrid');
-      const avgs = [
-        { name: 'Sleep', icon: '🌙', color: '#bf00ff', value: habits.sleep || 7.2, goal: 8 },
-        { name: 'Study', icon: '📚', color: '#00fff0', value: habits.study || 2.8, goal: 3 },
-        { name: 'Exercise', icon: '🏋️', color: '#00ff66', value: habits.exercise || 0.6, goal: 1 },
-        { name: 'Hydration', icon: '💧', color: '#00b8ff', value: habits.hydration || 6.5, goal: 8 }
+      if (!avgGrid) return;
+
+      const h = state.habits || {};
+      const items = [
+        { key: 'sleep', label: 'Sleep (hrs)' },
+        { key: 'study', label: 'Study (hrs)' },
+        { key: 'exercise', label: 'Exercise (hrs)' },
+        { key: 'hydration', label: 'Hydration (cups)' },
+        { key: 'nutrition', label: 'Nutrition (/10)' },
+        { key: 'mindfulness', label: 'Mind (min)' }
       ];
-      
-      avgGrid.innerHTML = avgs.map(a => {
-        const pct = Math.min(100, (parseFloat(a.value) / a.goal) * 100);
-        return `
-          <div style="padding: 12px; background: var(--bg-elevated); border-radius: 8px;">
-            <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 6px;">
-              <span style="color: ${a.color}">${a.icon}</span>
-              <span style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase;">${a.name}</span>
+
+      const cards = items
+        .filter(item => h[item.key] != null)
+        .map(item => `
+          <div class="habit-field" style="background: var(--bg-elevated);">
+            <div class="field-header">
+              <label>${item.label}</label>
             </div>
-            <div style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: ${a.color};">${parseFloat(a.value).toFixed(1)}</div>
-            <div style="height: 4px; background: var(--bg-darkest); border-radius: 2px; margin-top: 6px;">
-              <div style="height: 100%; width: ${pct}%; background: ${a.color}; border-radius: 2px;"></div>
+            <div style="font-family:var(--font-display);font-size:1.3rem;">
+              ${h[item.key]}
             </div>
-            <span style="font-size: 0.6rem; color: var(--text-muted);">${pct.toFixed(0)}% of goal</span>
+          </div>
+        `);
+
+      if (!cards.length) {
+        avgGrid.innerHTML = `
+          <div style="color: var(--text-muted); font-size: 0.85rem;">
+            Averages will show as you log more days.
           </div>
         `;
-      }).join('');
-      
-      const recs = document.getElementById('recommendations');
-      recs.innerHTML = `
-        <div style="display: flex; gap: 12px; padding: 12px; background: var(--bg-elevated); border-radius: 8px; border-left: 3px solid var(--neon-pink);">
-          <span style="color: #00ff66;">🏋️</span>
-          <div style="flex: 1;">
-            <span style="font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase;">Exercise</span>
-            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 2px;">Aim for at least 30 mins daily for bonus points!</p>
-          </div>
-          <span style="font-family: var(--font-mono); font-size: 0.55rem; padding: 2px 6px; background: rgba(255, 0, 170, 0.2); color: var(--neon-pink); border-radius: 4px; height: fit-content;">HIGH</span>
-        </div>
-        <div style="display: flex; gap: 12px; padding: 12px; background: var(--bg-elevated); border-radius: 8px; border-left: 3px solid var(--neon-yellow);">
-          <span style="color: #00b8ff;">💧</span>
-          <div style="flex: 1;">
-            <span style="font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase;">Hydration</span>
-            <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 2px;">Hit 8 cups to unlock the +2 bonus!</p>
-          </div>
-          <span style="font-family: var(--font-mono); font-size: 0.55rem; padding: 2px 6px; background: rgba(255, 255, 0, 0.2); color: var(--neon-yellow); border-radius: 4px; height: fit-content;">MED</span>
-        </div>
-      `;
+      } else {
+        avgGrid.innerHTML = cards.join('');
+      }
     }
 
+    // ============ NAVIGATION ============
     function showPage(pageId) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-      
-      document.getElementById(pageId).classList.add('active');
-      document.querySelector(`[data-page="${pageId}"]`).classList.add('active');
+
+      const page = document.getElementById(pageId);
+      if (page) page.classList.add('active');
+
+      const link = document.querySelector(`.nav-link[data-page="${pageId}"]`);
+      if (link) link.classList.add('active');
+
+      // Update matchup page when opened
+      if (pageId === 'matchup') {
+        updateMatchupPage();
+      }
     }
 
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', (e) => {
-        e.preventDefault();
-        showPage(link.dataset.page);
+        const page = link.dataset.page;
+        if (page) {
+          e.preventDefault();
+          showPage(page);
+        }
       });
     });
-
-    function promptForName() {
-      const name = prompt('Welcome to Fantasy Life League! Enter your name:');
-      if (name && name.trim()) {
-        state.user.name = name.trim();
-        state.matchup.opponent = 'Alex';
-        state.matchup.oppScore = 42;
-        saveState();
-        updateUI();
-      }
-    }
-
-    loadState();
-    if (state.user.name === 'Player') {
-      setTimeout(promptForName, 500);
-    }
   </script>
 </body>
+
 </html>
